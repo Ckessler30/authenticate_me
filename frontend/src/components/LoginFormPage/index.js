@@ -49,7 +49,7 @@ function LoginFormPage() {
               required
             />
         </div>
-        <button type="submit">Log In</button>
+        <button class="submitButton" type="submit">Log In</button>
       </div>
     </form>
   );

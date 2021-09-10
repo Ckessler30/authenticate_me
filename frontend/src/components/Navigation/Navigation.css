@@ -1,14 +1,28 @@
+
+a{
+     text-decoration: none;
+}
+
 .navBar{
     display: flex;
     border: 4px red;
-    justify-content: center;
+    justify-content: space-between;
+    font-size: 1.75rem;
+    margin: 2rem;
+    
+
 }
 
-/* .active{
-    color: red;
-} */
 
 .navs{
     display: flex;
-    gap: 1.5rem;
+    gap: 2.5rem;
+}
+
+
+.navBarLinks{
+}
+
+.navBarLinks:hover{
+    font-weight: bolder;
 }
