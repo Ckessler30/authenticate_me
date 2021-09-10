@@ -5,6 +5,11 @@
     align-items: center;
 }
 
+.loginBox input {
+    height: 2.5rem;
+    width: 25rem;
+}
+
 .inputFields{
     display: flex;
     gap: .75rem;
