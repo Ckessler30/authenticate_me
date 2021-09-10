@@ -1,0 +1,14 @@
+.navBar{
+    display: flex;
+    border: 4px red;
+    justify-content: center;
+}
+
+/* .active{
+    color: red;
+} */
+
+.navs{
+    display: flex;
+    gap: 1.5rem;
+}
