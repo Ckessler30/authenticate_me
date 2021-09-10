@@ -27,7 +27,6 @@ app.use(helmet({
   contentSecurityPolicy: false
 }));
 
-app.use(routes)
 
 // Set the _csrf token and create req.csrfToken method
 app.use(
@@ -38,7 +37,9 @@ app.use(
       httpOnly: true,
     },
   })
-);
-
+  );
+  
+  //must be below csurf so it can use it
+  app.use(routes)
 
 module.exports = app;
