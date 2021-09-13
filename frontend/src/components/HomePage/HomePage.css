@@ -11,7 +11,7 @@ body{
 
 html{
         height: 100%;
-        background-color: lightgrey;
+        background-color: whitesmoke;
 
 }
 
@@ -60,10 +60,13 @@ html{
 .questionBox{
     display: flex;
     flex-direction: column;
-    border: solid black 4px;
+    /* border: solid black 4px; */
     margin-top: 1rem;
     margin-bottom: 1rem;
     background-color: white;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+   border-radius: 5px;
+   padding: .5rem;
 }
 
 .questionImg img{
@@ -131,4 +134,52 @@ html{
     display: flex;
     flex-direction: column;
   width: 100%;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+   border-radius: 5px;
+   padding: .5rem;
+   border: none;
+}
+
+.spaceToFollow{
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    /* border: 2px solid black; */
+    background-color: white;
+    margin-top: 1rem;
+      box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+   border-radius: 5px;
+}
+.stfList{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    list-style-type: none;
+    width: 100%;
+    margin-left: -16px;
+}
+.stfListItems{
+    display: flex;
+    flex-direction: column;
+    max-height: 10rem;
+    overflow: hidden;
+
+
+}
+
+.stfListItems>p{
+    margin-top: -15px;
+    width: 100%;
+    
+}
+.spaceToFollowHead{
+    background-color: lightgrey;
+    width: 100%;
+    text-align: center;
+    height: 3rem;
+}
+
+.spaceToFollowHead>h3{
+   margin-top: 13px;
 }

@@ -105,7 +105,15 @@ function HomePage () {
 
                 </div>
                 <div className="spaceToFollow">
-
+                    <div className="spaceToFollowHead">
+                        <h3>Spaces to follow</h3>
+                    </div>
+                    <ul className="stfList">
+                        <li className="stfListItems">
+                            <h4>Seo And Digital Marketing</h4>
+                            <p>Share And Discuss Everything Seo and Digital Marketing</p>
+                        </li>
+                    </ul>
                 </div>
 
             </div>
