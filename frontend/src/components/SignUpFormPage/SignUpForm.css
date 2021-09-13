@@ -3,4 +3,12 @@
     flex-direction: column;
     align-items: center;
     gap: 1.2rem;
+    
 }
+
+.signUpForm input{
+    height: 2.5rem;
+    width: 25rem;
+}
+
+

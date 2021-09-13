@@ -11,6 +11,11 @@ const usersRouter = require('./users.js')
 router.use('/session', sessionRouter)
 router.use('/users', usersRouter)
 
+
+router.get('/', asyncHandler(async(req, res) => {
+  // const questions = await
+}))
+
 router.post('/test', (req, res) => {
     res.json({ requestBody: req.body})
 })
