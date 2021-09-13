@@ -22,14 +22,52 @@ function Navigation({ isLoaded }){
   }
 
   return (
+    <div className="navBar1">
      <ul className="navBar">
-         <li className="navs">
-             <NavLink className="navBarLinks" exact to="/">Home</NavLink>
-         </li>
-         <li className="navs">
-             {isLoaded && sessionLinks}
-         </li>
+       <li className="navs">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Quora_logo_2015.svg/1200px-Quora_logo_2015.svg.png" alt="" />
+       </li>
+       <li className="navs">
+        <NavLink exact to="/">
+          <i class="fas fa-home"></i>
+        </NavLink>
+       </li>
+       <li className="navs">
+        <NavLink to="/">
+          <i class="fas fa-list-alt"></i>
+        </NavLink>
+       </li>
+       <li className="navs">
+        <NavLink to="/">
+          <i class="fas fa-edit"></i>
+        </NavLink>
+       </li>
+       <li className="navs">
+        <NavLink to="/">
+          <i class="fas fa-users"></i>
+        </NavLink>
+       </li>
+       <li className="navs">
+        <NavLink to="/">
+          <i class="fas fa-bell"></i>
+        </NavLink>
+       </li>
+       <li className="navs">
+        <input type="text" placeholder="Search..." />
+       </li>
+       <li className="navs">
+        {isLoaded && sessionLinks}
+       </li>
+        <li className="navs">
+        <NavLink to="/">
+          <i class="fas fa-globe"></i>
+        </NavLink>
+       </li>
+       <li className="navs">
+         <button>Ask Question</button>
+       </li>
      </ul>
+    </div>
   );
 }
 
