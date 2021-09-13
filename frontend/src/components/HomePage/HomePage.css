@@ -53,7 +53,7 @@ html{
     grid-column-end: 11;
     margin-left: 1rem;
     margin-right: 1rem;
-    padding: 2rem;
+    /* padding: 2rem; */
 
 }
 
@@ -61,7 +61,9 @@ html{
     display: flex;
     flex-direction: column;
     border: solid black 4px;
-    margin: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    background-color: white;
 }
 
 .questionImg img{
@@ -115,4 +117,18 @@ html{
 }
 .improveFeedHead>h3{
    margin-top: 13px;
+}
+
+.questionButton{
+    display: flex;
+    
+    /* justify-content: center; */
+    /* align-content: center; */
+    
+}
+.questionButton>button{
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+  width: 100%;
 }

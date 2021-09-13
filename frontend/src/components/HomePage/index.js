@@ -32,9 +32,14 @@ function HomePage () {
                 Left
             </div>
             <div className="mainHomeBar">
-                {sessionUser && <div> 
-                    
-
+                {sessionUser && 
+                <div className="questionButton">
+                    <button>
+                        <div className="questionProfile">
+                            {sessionUser.username}
+                        </div>
+                        <h3>What is your question or link</h3>
+                    </button>
                 </div>
                     }
                 {questions.map((question) => {
