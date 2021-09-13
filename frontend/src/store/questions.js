@@ -1,62 +1,81 @@
+import { csrfFetch } from "./csrf";
 
-const LOAD = 'questions/LOAD'
-const ADD = 'questions/ADD'
+const LOAD = "questions/LOAD";
+const ADD = "questions/ADD";
 
-const load = list => ({
-    type: LOAD,
-    list
-})
+const load = (list) => ({
+  type: LOAD,
+  list,
+});
 
-const createQuestion = question => ({
-    type: ADD,
-    question
-})
+const createQuestion = (question) => ({
+  type: ADD,
+  question,
+});
 
-export const getQuestions = () => async dispatch => {
-    const response = await fetch(`/api/`)
+export const getQuestions = () => async (dispatch) => {
+  const response = await fetch(`/api/`);
 
-    if(response.ok){
-        const list = await response.json()
-        dispatch(load(list))
+  if (response.ok) {
+    const list = await response.json();
+    dispatch(load(list));
+  }
+};
+
+export const createNewQuestion = (questionDetails) => async (dispatch) => {
+   const { userId, title, questionText, questionImg} = questionDetails
+  const response = await csrfFetch("/api/questions/new", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+        userId,
+        title,
+        questionText,
+        questionImg
+    }),
+  });
+  
+
+  
+    const newQuestion = await response.json();
+    console.log('NEW QUESTION',newQuestion)
+    dispatch(createQuestion(newQuestion));
+    return newQuestion;
+  
+};
+
+const initalState = { list: [] };
+
+const questionReducer = (state = initalState, action) => {
+  let newState;
+  switch (action.type) {
+    case LOAD: {
+      const allQuestions = {};
+      action.list.forEach((question) => {
+        allQuestions[question.id] = question;
+      });
+
+      return {
+        ...allQuestions,
+        ...state,
+        list: action.list,
+      };
     }
-}
-
-export const createNewQuestion = (questionDetails) => async dispatch => {
-    const response = await fetch('/api/questions', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json'},
-        body: JSON.stringify(questionDetails)
-    })
-
-    if(response.ok){
-        const newQuestion = await response.json()
-        dispatch(createQuestion(newQuestion))
-        return newQuestion
-    }
-}
-
-
-
-const initalState = { list: []}
-
-const questionReducer = (state=initalState, action) => {
-    let newState;
-    switch(action.type){
-        case LOAD: {
-            const allQuestions = {}
-            action.list.forEach(question => {
-                allQuestions[question.id] = question
-            })
-            return {
-                ...allQuestions,
+    case ADD: {
+       
+            const newState = {
                 ...state,
-                list: action.list
+                [action.question.id]: action.question
             }
-        }
-        default:
-            return state
+            const questionList = newState.list.map(id => newState[id])
+            questionList.push(action.question)
+            newState.list = questionList
+            return newState
+        
     }
-}
+    default:
+      return state;
+  }
+};
 
-
-export default questionReducer
+export default questionReducer;
