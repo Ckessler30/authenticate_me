@@ -13,6 +13,9 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.TEXT,
       allowNull: false
     },
+    answerImg: {
+      type: DataTypes.TEXT,
+    },
     votes: {
       type: DataTypes.INTEGER,
       defaultValue: 0,
@@ -24,6 +27,7 @@ module.exports = (sequelize, DataTypes) => {
     Answer.belongsTo(models.User, { foreignKey: "userId" })
     Answer.belongsTo( models.Question, { foreignKey: "questionId"})
     Answer.hasMany(models.Vote, { foreignKey: "answerId" })
+    Answer.hasMany(models.Comment, { foreignKey: "answerId" })
   };
   return Answer;
 };

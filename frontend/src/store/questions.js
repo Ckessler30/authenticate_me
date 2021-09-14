@@ -24,6 +24,7 @@ export const getQuestions = () => async (dispatch) => {
 
 export const createNewQuestion = (questionDetails) => async (dispatch) => {
    const { userId, title, questionText, questionImg} = questionDetails
+  //  console.log(JSON.stringify({ userId, title, questionText, questionImg }));
   const response = await csrfFetch("/api/questions/new", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -34,20 +35,19 @@ export const createNewQuestion = (questionDetails) => async (dispatch) => {
         questionImg
     }),
   });
-  
-
-  
+    // console.log(response.body)
+    // console.log('ABOUT TO HIT RESPONSE')
     const newQuestion = await response.json();
-    console.log('NEW QUESTION',newQuestion)
+    // console.log('NEW QUESTION',newQuestion)
     dispatch(createQuestion(newQuestion));
     return newQuestion;
   
 };
 
-const initalState = { list: [] };
+const initalState = {  };
 
 const questionReducer = (state = initalState, action) => {
-  let newState;
+//   let newState;
   switch (action.type) {
     case LOAD: {
       const allQuestions = {};
@@ -62,14 +62,20 @@ const questionReducer = (state = initalState, action) => {
       };
     }
     case ADD: {
-       
-            const newState = {
-                ...state,
-                [action.question.id]: action.question
-            }
-            const questionList = newState.list.map(id => newState[id])
-            questionList.push(action.question)
-            newState.list = questionList
+            let newState = {...state, [action.question.id]: action.question}
+            // newState.list = newStateList
+            //  console.log("HERERERER", newState)
+            
+            // const questionList = []
+            // for(let id in newState){
+            //     const question = newState[id]
+            //     // console.log("Anotha one",question)
+            //     questionList.push(question)
+            // }
+            // // questionList.push(action.question)
+            // newState.list = questionList
+            newState.list.push(action.question)
+            // console.log("MAYBE????", newState)
             return newState
         
     }

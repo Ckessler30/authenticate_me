@@ -1,33 +1,26 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Votes', {
+    return queryInterface.createTable("Comments", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       userId: {
-        type: Sequelize.INTEGER,
         allowNull: false,
-        references: { model: 'Users' }
-      },
-      questionId: {
         type: Sequelize.INTEGER,
-        references: { model: 'Questions' }
+        references: {model: "Users"}
       },
       answerId: {
-        type: Sequelize.INTEGER,
-        references: { model: 'Answers' }
-      },
-      commentId: {
-        type: Sequelize.INTEGER,
-        references: { model: 'Comments' }
-      },
-      voteStatus: {
-        type: Sequelize.BOOLEAN,
         allowNull: false,
+        type: Sequelize.INTEGER,
+        references: {model: "Answers"}
+      },
+      commentText: {
+        allowNull: false,
+        type: Sequelize.TEXT,
       },
       createdAt: {
         allowNull: false,
@@ -38,10 +31,10 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE,
         defaultValue: Sequelize.fn("now"),
-      }
+      },
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Votes');
+    return queryInterface.dropTable('Comments');
   }
 };

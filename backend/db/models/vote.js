@@ -7,6 +7,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     questionId: DataTypes.INTEGER,
     answerId: DataTypes.INTEGER,
+    commentId: DataTypes.INTEGER,
     voteStatus: {
       type: DataTypes.BOOLEAN,
       allowNull: false
@@ -17,6 +18,7 @@ module.exports = (sequelize, DataTypes) => {
     Vote.belongsTo(models.User, { foreignKey: "userId"})
     Vote.belongsTo(models.Question, { foreignKey: "questionId"})
     Vote.belongsTo(models.Answer, { foreignKey: "answerId" })
+    Vote.belongsTo(models.Comment, { foreignKey: "commentId"})
   };
   return Vote;
 };
