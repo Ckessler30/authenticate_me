@@ -14,7 +14,7 @@ function HomePage () {
     const questions = useSelector(state => {
         return state.questions.list
     })
-    console.log("USER", sessionUser)
+    // console.log("USER", sessionUser)
 
 
     const [showForm, setShowForm] = useState(false)
@@ -58,7 +58,7 @@ function HomePage () {
               // console.log(finalDate)
 
               return (
-                <NavLink key={question.title} to={`/questions/${question.id}`}>
+                <NavLink key={question.id} to={`/questions/${question.id}`}>
                   <div className="questionBox">
                     <div className="questionHeader">
                       <div className="questionUser">

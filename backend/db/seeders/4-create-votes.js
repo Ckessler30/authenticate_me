@@ -10,33 +10,33 @@ module.exports = {
       */
       return queryInterface.bulkInsert('Votes', [
         {
-        userId: 8,
-        questionId: 19,
+        userId: 1,
+        questionId: 2,
         voteStatus: true
       },
         {
-        userId: 8,
-        answerId: 11,
+        userId: 1,
+        answerId: 1,
         voteStatus: false
       },
         {
-        userId: 9,
-        questionId: 20,
+        userId: 2,
+        questionId: 3,
         voteStatus: true
       },
         {
-        userId: 10,
-        answerId: 12,
+        userId: 2,
+        answerId: 3,
         voteStatus: true
       },
         {
-        userId: 9,
-        answerId: 12,
+        userId: 2,
+        answerId: 4,
         voteStatus: true
       },
         {
-        userId: 8,
-        answerId: 12,
+        userId: 1,
+        answerId: 3,
         voteStatus: true
       }
     ], {});

@@ -29,27 +29,27 @@ function Navigation({ isLoaded }){
        </li>
        <li className="navs">
         <NavLink exact to="/">
-          <i class="fas fa-home"></i>
+          <i className="fas fa-home"></i>
         </NavLink>
        </li>
        <li className="navs">
         <NavLink to="/">
-          <i class="fas fa-list-alt"></i>
+          <i className="fas fa-list-alt"></i>
         </NavLink>
        </li>
        <li className="navs">
         <NavLink to="/">
-          <i class="fas fa-edit"></i>
+          <i className="fas fa-edit"></i>
         </NavLink>
        </li>
        <li className="navs">
         <NavLink to="/">
-          <i class="fas fa-users"></i>
+          <i className="fas fa-users"></i>
         </NavLink>
        </li>
        <li className="navs">
         <NavLink to="/">
-          <i class="fas fa-bell"></i>
+          <i className="fas fa-bell"></i>
         </NavLink>
        </li>
        <li className="navs">
@@ -60,7 +60,7 @@ function Navigation({ isLoaded }){
        </li>
         <li className="navs">
         <NavLink to="/">
-          <i class="fas fa-globe"></i>
+          <i className="fas fa-globe"></i>
         </NavLink>
        </li>
        <li className="navs">
