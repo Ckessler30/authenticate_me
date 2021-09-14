@@ -17,26 +17,30 @@ function App() {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true))
   }, [dispatch])
 
-  return isLoaded &&(
+  return (
+    isLoaded && (
       <>
-      <Navigation isLoaded={isLoaded} />
-      {isLoaded && (
-        <Switch>
-          <Route exact path="/">
-            <HomePage />
-          </Route>  
-          <Route path="/login">
-            <LoginFormPage />
-          </Route>
-          <Route path="/signup">
-            <SignupFormPage />
-          </Route>
-          <Route path="/questions/:questionId">
-            <QuestionPage />
-          </Route>
-        </Switch>
-      )}
-    </>
+        <Navigation isLoaded={isLoaded} />
+        <main>
+          {isLoaded && (
+            <Switch>
+              <Route exact path="/">
+                <HomePage />
+              </Route>
+              <Route path="/login">
+                <LoginFormPage />
+              </Route>
+              <Route path="/signup">
+                <SignupFormPage />
+              </Route>
+              <Route path="/questions/:questionId">
+                <QuestionPage />
+              </Route>
+            </Switch>
+          )}
+        </main>
+      </>
+    )
   );
 
 }

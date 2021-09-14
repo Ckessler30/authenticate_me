@@ -1,0 +1,36 @@
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.QandABox{
+    display: flex;
+    flex-direction: column;
+     background-color: white;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+   border-radius: 5px;
+   margin-top: 1rem;
+   padding: .5rem;
+   min-width: 40rem;
+    /* text-align: center; */
+
+}
+
+.questionArea{
+    border-bottom: 4px solid grey;
+    /* margin-bottom: .5rem; */
+    
+}
+
+.questionLinks{
+    display: flex;
+    gap: 1rem;
+    margin-bottom: .25rem;
+}
+
+.answer{
+    display: flex;
+    flex-direction: column;
+    border-top: 4px solid grey;
+}

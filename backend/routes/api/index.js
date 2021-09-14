@@ -2,22 +2,24 @@ const router = require('express').Router();
 
 const asyncHandler = require('express-async-handler');
 const { setTokenCookie } = require('../../utils/auth.js');
-const { User, Question } = require('../../db/models');
+const { User, Question, Answer } = require('../../db/models');
 const { restoreUser, requireAuth } = require('../../utils/auth.js');
 
 const sessionRouter = require('./session.js')
 const usersRouter = require('./users.js')
 const questionsRouter = require('./questions.js');
+const answersRouter = require('./answers.js')
 
 
 router.use('/session', sessionRouter)
 router.use('/users', usersRouter)
 router.use('/questions', questionsRouter)
+router.use('/answers', answersRouter)
 
 
 router.get('/', asyncHandler(async(req, res) => {
   const questions = await Question.findAll({
-    include: User
+    include: User, Answer
   })
   return res.json(questions)
 }))
