@@ -10,23 +10,23 @@ module.exports = {
       */
       return queryInterface.bulkInsert('Answers', [
         {
-        userId: 8,
-        questionId: 19,
+        userId: 1,
+        questionId: 1,
         answerText: "Hey I see this question is pretty unordinary, are you under the age of 3?"
       },
         {
-        userId: 8,
-        questionId: 20,
+        userId: 1,
+        questionId: 2,
         answerText: "Hey, you probably should not be asking for driving advice on a questions website"
       },
         {
-        userId: 9,
-        questionId: 21,
+        userId: 2,
+        questionId: 3,
         answerText: "You could alwasy just eat the oatmeal dry, lol"
       },
         {
-        userId: 10,
-        questionId: 19,
+        userId: 3,
+        questionId: 2,
         answerText: "Come on man, you really dont know how to tie your shoes?? but you can type on a forum??"
       },
     ], {});
