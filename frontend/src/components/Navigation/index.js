@@ -11,9 +11,6 @@ function Navigation({ isLoaded }){
 
   const [showForm, setShowForm] = useState(false);
 
-   useEffect(() => {
-     console.log("HI");
-   }, [showForm]);
 
   let sessionLinks;
   if (sessionUser) {
