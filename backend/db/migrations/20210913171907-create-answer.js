@@ -22,6 +22,9 @@ module.exports = {
         type: Sequelize.TEXT,
         allowNull: false,
       },
+      answerImg: {
+        type: Sequelize.TEXT,
+      },
       votes: {
         type: Sequelize.INTEGER,
         allowNull: false,

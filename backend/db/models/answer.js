@@ -13,6 +13,9 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.TEXT,
       allowNull: false
     },
+    answerImg: {
+      type: DataTypes.TEXT,
+    },
     votes: {
       type: DataTypes.INTEGER,
       defaultValue: 0,

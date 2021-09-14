@@ -11,6 +11,7 @@ import CreateAnswerForm from "../CreateAnswer"
 function QuestionPage () {
     const dispatch = useDispatch()
     const [showAnswerForm, setShowAnswerForm] = useState(false)
+    const [showComments, setShowComments] = useState(false)
 
     const {questionId} = useParams()
     const question = useSelector(state => {
@@ -81,6 +82,9 @@ function QuestionPage () {
                   {answer.User?.username}
                 </h5>
                 <p>{answer.answerText}</p>
+                <div className="answerImg">
+                  <img src={answer.answerImg} alt="" />
+                </div>
                 <p>{answer.votes}</p>
                 <div className="bottomAnswerButtons">
                   <div className="bottomAnswerButtonsLeft">
@@ -104,7 +108,7 @@ function QuestionPage () {
                   </div>
                 </div>
                 <div className="commentsSection">
-                  <button>comments</button>
+                  <button onClick={() => setShowComments(true)}>comments</button>
                 </div>
               </div>
             ))}
