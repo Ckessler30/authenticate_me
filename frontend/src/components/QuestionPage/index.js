@@ -82,6 +82,30 @@ function QuestionPage () {
                 </h5>
                 <p>{answer.answerText}</p>
                 <p>{answer.votes}</p>
+                <div className="bottomAnswerButtons">
+                  <div className="bottomAnswerButtonsLeft">
+                    <button>
+                      <i class="fas fa-arrow-up"></i>
+                    </button>
+                    <button>
+                      <i class="fas fa-arrow-down"></i>
+                    </button>
+                    <button>
+                      <i class="fas fa-sync"></i>
+                    </button>
+                    <button>
+                      <i class="fas fa-comment"></i>
+                    </button>
+                  </div>
+                  <div className="bottomAnswerButtonsRight">
+                    <button>
+                      <i class="fas fa-share"></i>
+                    </button>
+                  </div>
+                </div>
+                <div className="commentsSection">
+                  <button>comments</button>
+                </div>
               </div>
             ))}
         </div>

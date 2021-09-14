@@ -18,7 +18,7 @@ main{
 }
 
 .questionArea{
-    border-bottom: 4px solid #e6e6e6;
+    border-bottom: 2.5px solid #e6e6e6;
     /* margin-bottom: .5rem; */
     
 }
@@ -33,7 +33,7 @@ main{
 .answer{
     display: flex;
     flex-direction: column;
-    border-top: 4px solid #e6e6e6;
+    border-top: 2.5px solid #e6e6e6;
 }
 
 .questionLinksLeft{    
@@ -43,4 +43,23 @@ main{
 .questionLinksRight{    
     display: flex;
     gap: .25rem;
+}
+
+.bottomAnswerButtons{
+    display: flex;
+    justify-content: space-between;
+}
+.bottomAnswerButtonsLeft{
+    display: flex;
+    gap: .25rem;
+}
+
+.commentsSection{
+    margin-top: .25rem;
+    margin-bottom: .5rem;
+}
+.commentsSection>button{
+    /* display: flex; */
+    width: 100%;
+    height: 3rem;
 }
