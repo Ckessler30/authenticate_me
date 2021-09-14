@@ -6,6 +6,7 @@ import './questionPage.css'
 import { getQuestions } from "../../store/questions"
 import { getAnswers } from "../../store/answers"
 import CreateAnswerForm from "../CreateAnswer"
+import CreateCommentForm from "../CreateComment"
 
 
 function QuestionPage () {
@@ -77,7 +78,7 @@ function QuestionPage () {
             answers.map((answer) => (
               <div className="answer" key={answer.id}>
                 <h5>
-                  <i class="fas fa-user-circle"></i>
+                  <i className="fas fa-user-circle"></i>
 
                   {answer.User?.username}
                 </h5>
@@ -89,26 +90,29 @@ function QuestionPage () {
                 <div className="bottomAnswerButtons">
                   <div className="bottomAnswerButtonsLeft">
                     <button>
-                      <i class="fas fa-arrow-up"></i>
+                      <i className="fas fa-arrow-up"></i>
                     </button>
                     <button>
-                      <i class="fas fa-arrow-down"></i>
+                      <i className="fas fa-arrow-down"></i>
                     </button>
                     <button>
-                      <i class="fas fa-sync"></i>
+                      <i className="fas fa-sync"></i>
                     </button>
                     <button>
-                      <i class="fas fa-comment"></i>
+                      <i className="fas fa-comment"></i>
                     </button>
                   </div>
                   <div className="bottomAnswerButtonsRight">
                     <button>
-                      <i class="fas fa-share"></i>
+                      <i className="fas fa-share"></i>
                     </button>
                   </div>
                 </div>
                 <div className="commentsSection">
-                  <button onClick={() => setShowComments(true)}>comments</button>
+                  <button onClick={() => setShowComments(!showComments)}>comments</button>
+                  {showComments && 
+                    <CreateCommentForm hideForm={() => setShowAnswerForm(false)} answerId={answer.id} />
+                  }
                 </div>
               </div>
             ))}

@@ -3,15 +3,15 @@ import { csrfFetch } from "./csrf";
 const LOAD = "comments/LOAD"
 const ADD = "comments/ADD"
 
-const load = (list) => ({
+const load = (commentsList) => ({
     type: LOAD,
     commentsList
 })
 
-const createComment = (comment) => {
+const createComment = (comment) => ({
     type: ADD,
     comment
-}
+})
 
 export const getComments = () => async dispatch => {
     const response = await fetch('/api/comments/')
@@ -24,7 +24,7 @@ export const getComments = () => async dispatch => {
 export const createNewComment = (commentDetails) => async dispatch => {
     const { userId, commentText, answerId } = commentDetails
     const response = await csrfFetch("/api/comments/new", {
-        method="POST",
+        method: "POST",
         headers: { "Content-Type": "application/json"},
         body: JSON.stringify({
             userId,
