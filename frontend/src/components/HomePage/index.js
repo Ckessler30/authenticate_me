@@ -12,7 +12,7 @@ function HomePage () {
     const data = useParams()
     const sessionUser = useSelector((state) => state.session.user);
     const questions = useSelector(state => {
-      console.log("STATE", state)
+      // console.log("STATE", state)
         return state.questions.list
     })
     // console.log("USER", sessionUser)
@@ -21,6 +21,7 @@ function HomePage () {
 
 
     // console.log("TARGET", questions[0].User)
+   
 
     useEffect(() => {
         dispatch(getQuestions())
