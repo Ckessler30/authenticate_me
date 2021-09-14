@@ -5,6 +5,7 @@ import { createNewAnswer } from "../../store/answers";
 
 
 
+
 import "./newAnswer.css";
 
 const CreateAnswerForm = ({ hideForm }) => {
@@ -39,19 +40,24 @@ const CreateAnswerForm = ({ hideForm }) => {
   return hideForm ? (
     <div className="createNewAnswer">
       <div className="createNewAnswerInner">
+        <div className="answerProfileHead">
+          <i class="fas fa-user-secret"></i>
+          <h3>{sessionUser.username}</h3>
+        </div>
         <form onSubmit={handleSubmit} className="createAnswerInputs">
-          <input
-            type="text"
+          <textarea
             placeholder="Write your answer"
             required
             value={answerText}
             onChange={(e) => setAnswerText(e.target.value)}
           />
-          <button type="submit">Submit</button>
-          <button type="button">Save Draft</button>
-          <button type="button" onClick={handleCancelClick}>
-            Cancel
-          </button>
+          <div className="answerButtons">
+              <button type="submit">Submit</button>
+              <button type="button">Save Draft</button>
+              <button type="button" onClick={handleCancelClick}>
+                Cancel
+              </button>
+          </div>
         </form>
       </div>
     </div>

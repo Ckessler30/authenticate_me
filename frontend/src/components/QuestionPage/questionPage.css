@@ -11,26 +11,36 @@ main{
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
    border-radius: 5px;
    margin-top: 1rem;
-   padding: .5rem;
+   padding: .75rem;
    min-width: 40rem;
     /* text-align: center; */
 
 }
 
 .questionArea{
-    border-bottom: 4px solid grey;
+    border-bottom: 4px solid #e6e6e6;
     /* margin-bottom: .5rem; */
     
 }
 
 .questionLinks{
     display: flex;
-    gap: 1rem;
+   
+    justify-content: space-between;
     margin-bottom: .25rem;
 }
 
 .answer{
     display: flex;
     flex-direction: column;
-    border-top: 4px solid grey;
+    border-top: 4px solid #e6e6e6;
+}
+
+.questionLinksLeft{    
+    display: flex;
+    gap: .25rem;
+}
+.questionLinksRight{    
+    display: flex;
+    gap: .25rem;
 }

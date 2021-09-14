@@ -41,20 +41,33 @@ function QuestionPage () {
           <div className="questionArea">
             <h3>{question?.title}</h3>
             <div className="questionLinks">
-              <button onClick={() => setShowAnswerForm(true)}>
-                <i class="fas fa-edit"></i> Answer
-              </button>
-              <button>
-                <i class="fas fa-wifi"></i>
-                Follow
-              </button>
-              <button>
-                <i class="fas fa-user-astronaut"></i>Request
-              </button>
-              {showAnswerForm && (
-                <CreateAnswerForm hideForm={() => setShowAnswerForm(false)} />
-              )}
+              <div className="questionLinksLeft">
+                <button onClick={() => setShowAnswerForm(true)}>
+                  <i class="fas fa-edit"></i> Answer
+                </button>
+                <button>
+                  <i class="fas fa-wifi"></i>
+                  Follow
+                </button>
+                <button>
+                  <i class="fas fa-user-astronaut"></i>Request
+                </button>
+              </div>
+              <div className="questionLinksRight">
+                <button>
+                  <i class="fas fa-comment"></i>
+                </button>
+                <button>
+                  <i class="fas fa-arrow-circle-down"></i>
+                </button>
+                <button>
+                  <i class="fas fa-share"></i>
+                </button>
+              </div>
             </div>
+            {showAnswerForm && (
+              <CreateAnswerForm hideForm={() => setShowAnswerForm(false)} />
+            )}
           </div>
           <div className="answerLengthBox">
             <h4>{answers.length} Answers</h4>
