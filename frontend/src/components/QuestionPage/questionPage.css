@@ -68,4 +68,5 @@ main{
     height: 100%;
     width: 100%;
     max-height: 35rem;
+    max-width: 45rem;
 }

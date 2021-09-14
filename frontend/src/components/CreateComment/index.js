@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { createNewComment, getComments } from "../../store/comments";
 
+import { removeComment } from "../../store/comments";
 
 import "./newComment.css";
 
@@ -11,24 +12,20 @@ const CreateCommentForm = ({answerId, hideForm }) => {
   const sessionUser = useSelector((state) => state.session.user);
   const {questionId} = useParams();
   const [commentText, setCommentText] = useState("");
-  const comments = useSelector(state => {
-      const comments = []
-      for(let id in state.comments.commentsList){
-          const comment = state.comments.commentsList[id]
-          if(comment.answerId === +answerId){
-              comments.push(comment)
-          }
-      }
-      return comments
-  })
+  const comments = useSelector(state => state.comments.commentsList)
+  let realComments;
 
-//   console.log(allComments)
-
-//   console.log(data)
-
+  // console.log(comments)
+  //   console.log(data)
   useEffect(() => {
     dispatch(getComments())
   },[dispatch])
+  
+  if(comments){
+
+    realComments = comments.filter(comment => comment.answerId === +answerId)
+    // console.log(realComments)
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -40,12 +37,20 @@ const CreateCommentForm = ({answerId, hideForm }) => {
     };
 
     const createdComment = await dispatch(createNewComment(commentDetails));
+
+    if(createdComment){
+      setCommentText("")
+    }
     
   };
   const handleCancelClick = (e) => {
     e.preventDefault();
     hideForm();
   };
+   const deleteComment = async (e) => {
+     e.preventDefault();
+     const deletedComment = await dispatch(removeComment());
+   };
 
   return hideForm ? (
     <div className="commentsSection">
@@ -68,8 +73,8 @@ const CreateCommentForm = ({answerId, hideForm }) => {
         </div>
       </div>
       <div className="commentsList">
-        {comments &&
-          comments.map((comment) => (
+        {realComments &&
+          realComments.map((comment) => (
             <div className="comment" key={comment.id}>
               <h4>
                 <i className="fas fa-user-circle"></i>
@@ -80,19 +85,24 @@ const CreateCommentForm = ({answerId, hideForm }) => {
               <div className="bottomCommentButtons">
                 <div className="bottomCommentLeft">
                   <button>
-                    <i class="fas fa-arrow-up"></i> UpVote
+                    <i className="fas fa-arrow-alt-circle-up"></i>
+                    UpVote
                   </button>
                   <button>
-                    <i class="fas fa-reply"></i> Reply
+                    <i className="fas fa-reply"></i> Reply
                   </button>
                 </div>
                 <div className="bottomCommentRight">
                   <button>
-                    <i class="fas fa-arrow-down"></i>
+                    <i className="fas fa-arrow-down"></i>
                   </button>
                   <button>
-                    <i class="fas fa-ellipsis-h"></i>
+                    <i className="fas fa-ellipsis-h"></i>
                   </button>
+                  {sessionUser.id === comment.userId ? <button onClick={async(e) => {
+                      e.preventDefault()
+                      const deletedComment= await dispatch(removeComment(comment.id))
+                  }}></button> : ''}
                 </div>
               </div>
             </div>

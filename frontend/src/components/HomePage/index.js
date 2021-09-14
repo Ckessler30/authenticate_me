@@ -62,8 +62,8 @@ function HomePage () {
               // console.log(finalDate)
 
               return (
-                <NavLink key={question.id} to={`/questions/${question.id}`}>
-                  <div className="questionBox">
+                <div className="questionBox" key={question.id}>
+                  <NavLink key={question.id} to={`/questions/${question.id}`}>
                     <div className="questionHeader">
                       <div className="questionUser">
                         <h3>{question?.User?.username}</h3>
@@ -75,11 +75,31 @@ function HomePage () {
                     <div className="questionImg">
                       <img src={question.questionImg} alt="" />
                     </div>
-                    <div className="questionFooter">
-                      <h4>{question.votes}</h4>
+                  </NavLink>
+                  <div className="questionFooter">
+                    <div className="questionFootButtonsLeft">
+                      <button>
+                        <i className="fas fa-arrow-alt-circle-up"></i>
+
+                        {question.votes}
+                      </button>
+                      <button>
+                        <i className="fas fa-arrow-down"></i>
+                      </button>
+                      <button>
+                        <i className="fas fa-sync-alt"></i>
+                      </button>
+                      <button>
+                        <i class="fas fa-comment"></i>
+                      </button>
+                    </div>
+                    <div className="questionFootButtonsRight">
+                      <button>
+                        <i className="fas fa-share"></i>
+                      </button>
                     </div>
                   </div>
-                </NavLink>
+                </div>
               );
             })}
           </div>

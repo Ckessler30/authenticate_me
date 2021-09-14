@@ -34,4 +34,20 @@ router.post(
   })
 );
 
+router.delete("/:id(\\d+)", requireAuth, asyncHandler(async(req, res) => {
+  const { commentId } = req.body
+  // console.log("LOOK",commentId)
+  const comment = await Comment.findOne({
+    where: {
+      id:commentId
+    }
+  })
+  // console.log('HERE',comment)
+
+  if(comment){
+   await comment.destroy()
+  }
+  return res.json(commentId)
+}));
+
 module.exports = router;
