@@ -188,3 +188,13 @@ html{
 .spaceToFollowHead>h3{
    margin-top: 13px;
 }
+
+.questionFooter{
+    display: flex;
+    justify-content: space-between;
+}
+
+.questionFootButtonsLeft{
+    display: flex;
+    gap: .25rem;
+}

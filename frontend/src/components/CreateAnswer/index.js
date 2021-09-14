@@ -13,6 +13,7 @@ const CreateAnswerForm = ({ hideForm }) => {
   const sessionUser = useSelector((state) => state.session.user);
   const { questionId } = useParams()
   const [answerText, setAnswerText] = useState("");
+  const [answerImg, setAnswerImg] = useState("")
   
   // console.log(sessionUser)
 
@@ -22,7 +23,8 @@ const CreateAnswerForm = ({ hideForm }) => {
     const answerDetails = {
       userId: sessionUser.id,
       answerText,
-      questionId
+      questionId,
+      answerImg
     };
 
     const createdAnswer = await dispatch(createNewAnswer(answerDetails));
@@ -41,16 +43,18 @@ const CreateAnswerForm = ({ hideForm }) => {
     <div className="createNewAnswer">
       <div className="createNewAnswerInner">
         <div className="answerProfileHead">
-          <i class="fas fa-user-secret"></i>
+          <i className="fas fa-user-secret"></i>
           <h3>{sessionUser.username}</h3>
         </div>
         <form onSubmit={handleSubmit} className="createAnswerInputs">
+          <input type="text" placeholder="Image URL" value={answerImg} onChange={(e) => setAnswerImg(e.target.value)}/>
           <textarea
             placeholder="Write your answer"
             required
             value={answerText}
             onChange={(e) => setAnswerText(e.target.value)}
           />
+          
           <div className="answerButtons">
               <button type="submit">Submit</button>
               <button type="button">Save Draft</button>

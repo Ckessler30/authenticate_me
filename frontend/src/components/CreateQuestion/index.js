@@ -24,7 +24,7 @@ const CreateQuestionForm = ({ hideForm }) => {
             questionImg
         }
 
-        console.log(questionDetails)
+        // console.log(questionDetails)
         const createdQuestion = await dispatch(createNewQuestion(questionDetails))
         if(createdQuestion){
             //need to update this before final

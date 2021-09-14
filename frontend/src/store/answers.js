@@ -23,14 +23,15 @@ export const getAnswers = () => async dispatch => {
 }
 
 export const createNewAnswer = (answerDetails) => async dispatch => {
-    const { userId, answerText, questionId} = answerDetails
+    const { userId, answerText, questionId, answerImg} = answerDetails
     const response = await csrfFetch("/api/answers/new", {
         method: "POST",
         headers: { "Content-Type": "application/json"},
         body: JSON.stringify({
             userId,
             answerText,
-            questionId
+            questionId,
+            answerImg
         })
     })
 

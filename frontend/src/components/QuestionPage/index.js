@@ -9,11 +9,13 @@ import CreateAnswerForm from "../CreateAnswer"
 import CreateCommentForm from "../CreateComment"
 
 
+
 function QuestionPage () {
     const dispatch = useDispatch()
     const [showAnswerForm, setShowAnswerForm] = useState(false)
     const [showComments, setShowComments] = useState(false)
-
+    const sessionUser = useSelector((state) => state.session.user);
+    // console.log(sessionUser)
     const {questionId} = useParams()
     const question = useSelector(state => {
         return state.questions[questionId]
@@ -29,13 +31,15 @@ function QuestionPage () {
         }
         return answers
     })
-    console.log(answers)
+    // console.log(answers)
     useEffect(() => {
       dispatch(getAnswers())  
       dispatch(getQuestions());
     }, [dispatch]);
 
     // console.log(question)
+
+   
 
     return (
       <main>
@@ -106,6 +110,7 @@ function QuestionPage () {
                     <button>
                       <i className="fas fa-share"></i>
                     </button>
+                    {sessionUser.id === answer.userId ? <button> </button> : ''}
                   </div>
                 </div>
                 <div className="commentsSection">

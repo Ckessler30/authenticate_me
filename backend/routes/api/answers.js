@@ -25,12 +25,13 @@ router.post(
   answerValidations.validateCreate,
   requireAuth,
   asyncHandler(async (req, res) => {
-       const { userId, questionId, answerText } = req.body;
+       const { userId, questionId, answerText, answerImg } = req.body;
     //    console.log(typeof userId);
        const answer = await Answer.create({
          userId,
          answerText,
-         questionId
+         questionId,
+         answerImg
        });
        return res.json(answer);
   })
