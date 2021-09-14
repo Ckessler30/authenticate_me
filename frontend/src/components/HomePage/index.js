@@ -12,10 +12,10 @@ function HomePage () {
     const data = useParams()
     const sessionUser = useSelector((state) => state.session.user);
     const questions = useSelector(state => {
+      console.log("STATE", state)
         return state.questions.list
     })
     // console.log("USER", sessionUser)
-
 
     const [showForm, setShowForm] = useState(false)
 
@@ -46,15 +46,18 @@ function HomePage () {
               </div>
             )}
             {questions.map((question) => {
-              const dateParts = question.createdAt.split("-");
-              const day = dateParts[2].split("T")[0];
-              // console.log(dateParts)
-              // console.log(day)
-              const newDate = new Date(dateParts[0], dateParts[1] - 1, day);
-              const finalDate = newDate
-                .toDateString()
-                .split(" ")[1]
-                .concat(newDate.toDateString().split(" ")[2]);
+              
+                // console.log("questions", questions)
+                const dateParts = question.createdAt.split("-");
+                const day = dateParts[2].split("T")[0];
+                // console.log(dateParts)
+                // console.log(day)
+                const newDate = new Date(dateParts[0], dateParts[1] - 1, day);
+                 let finalDate = newDate
+                  .toDateString()
+                  .split(" ")[1]
+                  .concat(newDate.toDateString().split(" ")[2]);
+              
               // console.log(finalDate)
 
               return (
@@ -62,8 +65,8 @@ function HomePage () {
                   <div className="questionBox">
                     <div className="questionHeader">
                       <div className="questionUser">
-                        <h3>{question.User.username}</h3>
-                        <p>{finalDate}</p>
+                        <h3>{question?.User?.username}</h3>
+                        <p>{finalDate ? finalDate : "now"}</p>
                       </div>
                       <h3>{question.title}</h3>
                       <p>{question.questionText}</p>

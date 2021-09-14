@@ -20,7 +20,7 @@ router.post('/new', questionValidations.validateCreate, requireAuth, asyncHandle
         questionText,
         questionImg
     })
-    return res.redirect('/')
+    return res.json(test)
 }))
 
 

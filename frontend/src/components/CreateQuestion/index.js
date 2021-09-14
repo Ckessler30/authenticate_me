@@ -25,10 +25,10 @@ const CreateQuestionForm = ({ hideForm }) => {
         }
 
         console.log(questionDetails)
-        let createdQuestion = await dispatch(createNewQuestion(questionDetails))
+        const createdQuestion = await dispatch(createNewQuestion(questionDetails))
         if(createdQuestion){
             //need to update this before final
-            history.push('/')
+            // history.push('/')
             hideForm()
         }
     }
