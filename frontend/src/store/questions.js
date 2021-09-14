@@ -24,7 +24,7 @@ export const getQuestions = () => async (dispatch) => {
 
 export const createNewQuestion = (questionDetails) => async (dispatch) => {
    const { userId, title, questionText, questionImg} = questionDetails
-   console.log(JSON.stringify({ userId, title, questionText, questionImg }));
+  //  console.log(JSON.stringify({ userId, title, questionText, questionImg }));
   const response = await csrfFetch("/api/questions/new", {
     method: "POST",
     headers: { "Content-Type": "application/json" },

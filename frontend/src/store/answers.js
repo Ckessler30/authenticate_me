@@ -8,6 +8,11 @@ const load = (answerList) => ({
     answerList,
 })
 
+const createAnswer = (answer) => ({
+    type: ADD,
+    answer
+})
+
 export const getAnswers = () => async dispatch => {
     const response = await fetch('/api/answers/')
 
@@ -15,6 +20,23 @@ export const getAnswers = () => async dispatch => {
         const list = await response.json()
         dispatch(load(list))
     }
+}
+
+export const createNewAnswer = (answerDetails) => async dispatch => {
+    const { userId, answerText, questionId} = answerDetails
+    const response = await csrfFetch("/api/answers/new", {
+        method: "POST",
+        headers: { "Content-Type": "application/json"},
+        body: JSON.stringify({
+            userId,
+            answerText,
+            questionId
+        })
+    })
+
+    const newAnswer = await response.json()
+    dispatch(createAnswer(newAnswer))
+    return newAnswer
 }
 
 const initialState = {}
@@ -31,6 +53,11 @@ const answerReducer = (state = initialState, action) => {
         ...state,
         answerList: action.answerList,
       };
+    }
+    case ADD: {
+        let newState = { ...state, [action.answer.id]: action.answer}
+        newState.answerList.push(action.answer)
+        return newState
     }
     default:
       return state;

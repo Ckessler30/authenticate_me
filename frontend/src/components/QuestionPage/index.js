@@ -5,10 +5,12 @@ import './questionPage.css'
 
 import { getQuestions } from "../../store/questions"
 import { getAnswers } from "../../store/answers"
+import CreateAnswerForm from "../CreateAnswer"
 
 
 function QuestionPage () {
     const dispatch = useDispatch()
+    const [showAnswerForm, setShowAnswerForm] = useState(false)
 
     const {questionId} = useParams()
     const question = useSelector(state => {
@@ -39,7 +41,7 @@ function QuestionPage () {
           <div className="questionArea">
             <h3>{question?.title}</h3>
             <div className="questionLinks">
-              <button>
+              <button onClick={() => setShowAnswerForm(true)}>
                 <i class="fas fa-edit"></i> Answer
               </button>
               <button>
@@ -49,6 +51,9 @@ function QuestionPage () {
               <button>
                 <i class="fas fa-user-astronaut"></i>Request
               </button>
+              {showAnswerForm && (
+                <CreateAnswerForm hideForm={() => setShowAnswerForm(false)} />
+              )}
             </div>
           </div>
           <div className="answerLengthBox">
@@ -57,7 +62,11 @@ function QuestionPage () {
           {answers &&
             answers.map((answer) => (
               <div className="answer" key={answer.id}>
-                <h5>{answer.User.username}</h5>
+                <h5>
+                  <i class="fas fa-user-circle"></i>
+
+                  {answer.User?.username}
+                </h5>
                 <p>{answer.answerText}</p>
                 <p>{answer.votes}</p>
               </div>
