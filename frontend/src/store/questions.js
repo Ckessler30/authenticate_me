@@ -19,6 +19,24 @@ const remove = (questionId) => ({
   questionId,
 });
 
+export const editQuestion = (questionDetails) => async dispatch => {
+  const { title, questionText, questionId } = questionDetails
+  const response = await csrfFetch(`/api/questions/${questionId}`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json"},
+    body: JSON.stringify({
+      title,
+      questionText,
+      questionId
+    })
+  })
+  if(response.ok){
+    const updatedQuestion = await response.json()
+    dispatch(createQuestion(updatedQuestion))
+    return updatedQuestion
+  }
+}
+
 export const removeQuestion = (questionId) => async dispatch => {
   const response = await csrfFetch(`/api/questions/${questionId}`, {
     method: "DELETE",
@@ -84,7 +102,23 @@ const questionReducer = (state = initalState, action) => {
       };
     }
     case ADD: {
-            let newState = {...state, [action.question.id]: action.question}
+      if(!state[action.question.id]){
+        let newState = {...state, [action.question.id]: action.question}
+        newState.list.push(action.question)
+        return newState
+      }else{
+        let updatedState = { ...state }
+        updatedState[action.question.id] = action.question
+        const newQuestionList = [...updatedState.list]
+        const removeQuestion = newQuestionList.filter(question => question.id === action.question.id)[0]
+        newQuestionList.splice(newQuestionList.findIndex(question => question.id === removeQuestion.id), 1, action.question)
+        // console.log(removeQuestion)
+        // console.log(newQuestionList)
+        // console.log(updatedState)
+        updatedState.list = newQuestionList
+        return updatedState
+      }
+      
             // newState.list = newStateList
             //  console.log("HERERERER", newState)
             
@@ -96,9 +130,7 @@ const questionReducer = (state = initalState, action) => {
             // }
             // // questionList.push(action.question)
             // newState.list = questionList
-            newState.list.push(action.question)
             // console.log("MAYBE????", newState)
-            return newState
         
     }
     case REMOVE: {

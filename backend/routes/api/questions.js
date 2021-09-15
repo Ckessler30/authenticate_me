@@ -63,5 +63,21 @@ router.delete("/:id(\\d+)", requireAuth, asyncHandler(async(req,res) => {
 }));
 
 
+router.put("/:id(\\d+)", requireAuth, asyncHandler(async(req, res) => {
+    const { title, questionId, questionText} = req.body
+    const question = await Question.findOne({
+        where: {
+            id: questionId
+        }
+    })
+    const updatedQuestion = await question.update({
+        title,
+        questionText
+    })
+    console.log(updatedQuestion)
+    return res.json(updatedQuestion)
+}));
+
+
 
 module.exports = router

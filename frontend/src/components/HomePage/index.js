@@ -7,6 +7,7 @@ import './HomePage.css'
 
 import CreateQuestionForm from "../CreateQuestion";
 import DeleteForm from "../DeletePopup";
+import EditQuestionForm from "../EditQuestionForm";
 
 function HomePage () {
     const dispatch = useDispatch()
@@ -102,6 +103,9 @@ function HomePage () {
                       
                       {sessionUser?.id === +question.userId && (
                         <DeleteForm questionId={question.id} deleteType={"question"} />
+                      )}
+                      {sessionUser?.id === +question.userId && (
+                        <EditQuestionForm question={question}/>
                       )}
                     </div>
                   </div>
