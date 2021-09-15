@@ -49,17 +49,6 @@ const AnswerArea = ({ answer }) => {
           </div>
         </div>
         <CreateCommentForm answerId={answer.id} />
-        {/* <div className="commentsSection">
-          <button onClick={() => setShowComments(!showComments)}>
-            comments
-          </button>
-          {showComments && (
-            <CreateCommentForm
-              hideForm={() => setShowComments(false)}
-              answerId={answer.id}
-            />
-          )}
-        </div> */}
       </div>
     );
 }
