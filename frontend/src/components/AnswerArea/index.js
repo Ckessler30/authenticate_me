@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 
 import CreateCommentForm from "../CreateComment";
 import DeleteForm from "../DeletePopup";
+import EditAnswerForm from "../EditAnswer";
 
 
 const AnswerArea = ({ answer }) => {
@@ -46,6 +47,7 @@ const AnswerArea = ({ answer }) => {
               <i className="fas fa-share"></i>
             </button>
             {sessionUser?.id === answer.userId && <DeleteForm answerId={answer.id} deleteType={"answer"}/>}
+            {sessionUser?.id === answer.userId && <EditAnswerForm answer={answer}/>}
           </div>
         </div>
         <CreateCommentForm answerId={answer.id} />

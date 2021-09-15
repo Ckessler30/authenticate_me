@@ -35,7 +35,7 @@ const EditQuestionForm = ({question}) => {
   return (
     <div className="editQuestionFormBox">
       <button onClick={() => setShowEditQuestion(true)}>
-        <i class="fas fa-pen-alt"></i> Edit
+        <i className="fas fa-pen-alt"></i> Edit
       </button>
 
       {showEditQuestion && (
@@ -47,7 +47,7 @@ const EditQuestionForm = ({question}) => {
                   onClick={() => setShowEditQuestion(false)}
                   className="xButton"
                 >
-                  <i class="fas fa-times"></i>
+                  <i className="fas fa-times"></i>
                 </button>
                 <h2>Edit Question</h2>
                 <input

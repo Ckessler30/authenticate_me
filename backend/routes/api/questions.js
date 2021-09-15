@@ -74,7 +74,7 @@ router.put("/:id(\\d+)", requireAuth, asyncHandler(async(req, res) => {
         title,
         questionText
     })
-    console.log(updatedQuestion)
+    // console.log(updatedQuestion)
     return res.json(updatedQuestion)
 }));
 
