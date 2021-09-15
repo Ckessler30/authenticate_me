@@ -82,6 +82,15 @@ const answerReducer = (state = initialState, action) => {
         newState.answerList.push(action.answer)
         return newState
     }
+    case REMOVE: {
+      const deleteState = { ...state }
+      const newAnswersList = [...deleteState.answerList]
+      const removeAnswer = newAnswersList.filter(answer => answer.id === action.answerId)
+      removeAnswer.forEach(answer => newAnswersList.splice(newAnswersList.findIndex(answer2 => answer2.id === answer.id), 1))
+      delete deleteState[action.answerId]
+      deleteState.answerList = newAnswersList
+      return deleteState
+    }
     default:
       return state;
   }
