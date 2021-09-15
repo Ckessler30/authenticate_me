@@ -74,7 +74,7 @@ const CreateCommentForm = ({answerId, hideForm }) => {
           </form>
         </div>
       </div>
-      <AnswerComments hideForm={hideForm} answerId={answerId} />
+      <AnswerComments hideForm={hideForm} answerId={answerId} commentText={commentText} />
       </div>
       }
       {/* {comments &&

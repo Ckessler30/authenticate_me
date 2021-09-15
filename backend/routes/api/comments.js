@@ -54,4 +54,19 @@ router.delete("/:id(\\d+)", requireAuth, asyncHandler(async(req, res) => {
   return res.json(commentId)
 }));
 
+router.put("/:id(\\d+)", requireAuth, asyncHandler(async(req,res) => {
+  const { commentText, commentId} = req.body
+  const comment = await Comment.findOne({
+    where:{
+      id: commentId
+    }
+  })
+
+  const updatedComment = await comment.update({
+    commentText
+  })
+  return res.json(updatedComment)
+
+}));
+
 module.exports = router;

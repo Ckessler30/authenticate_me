@@ -19,6 +19,23 @@ const remove = (commentId) => ({
     commentId
 })
 
+export const editComment = (commentDetails) => async dispatch => {
+    const { commentId, commentText } = commentDetails
+    const response = await csrfFetch(`/api/comments/${commentId}`, {
+        method: "PUT",
+        headers: {"Content-Type": "application/json"},
+        body:JSON.stringify({
+            commentText,
+            commentId
+        })
+    })
+    if(response.ok){
+        const updatedComment = await response.json()
+        dispatch(createComment(updatedComment))
+        return updatedComment
+    }
+}
+
 export const removeComment = (commentId) => async dispatch => {
     
     const response = await csrfFetch(`/api/comments/${commentId}`, {
@@ -91,9 +108,20 @@ const commentReducer = (state=initialState, action) => {
             return newState
         }
         case ADD: {
-            const newestState = { ...state, [action.comment.id]: action.comment}
-            newestState.commentsList.push(action.comment)
-            return newestState
+            if(!state[action.comment.id]){
+                const newestState = { ...state, [action.comment.id]: action.comment}
+                newestState.commentsList.push(action.comment)
+                return newestState
+            }else{
+                let updatedState = { ...state }
+                updatedState[action.comment.id] = action.comment
+                const newCommentsList = [...updatedState.commentsList]
+                const removeComment = newCommentsList.filter(comment => comment.id === action.comment.id)[0]
+                newCommentsList.splice(newCommentsList.findIndex(comment => comment.id === removeComment.id), 1, action.comment)
+                updatedState.commentsList = newCommentsList
+                return updatedState
+                
+            }
         }
         default:
             return state
