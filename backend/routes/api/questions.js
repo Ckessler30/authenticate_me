@@ -24,5 +24,21 @@ router.post('/new', questionValidations.validateCreate, requireAuth, asyncHandle
 }))
 
 
+router.delete("/:id(\\d+)", requireAuth, asyncHandler(async(req,res) => {
+    const { questionId } = req.body
+    const question = await Question.findOne({
+        where:{
+            id: questionId
+        }
+    })
+
+    if(question){
+        await question.destroy()
+    }
+
+    return res.json(questionId)
+}));
+
+
 
 module.exports = router

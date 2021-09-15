@@ -198,3 +198,7 @@ html{
     display: flex;
     gap: .25rem;
 }
+
+.questionFootButtonsRight{
+    display: flex;
+}

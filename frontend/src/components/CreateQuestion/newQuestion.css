@@ -20,6 +20,8 @@
     display: flex;
     flex-direction: column;
     border-radius: 5px;
+    align-items: center;
+    
 }
 
 .createQuestionInputs{
