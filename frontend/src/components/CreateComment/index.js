@@ -14,15 +14,15 @@ const CreateCommentForm = ({answerId, hideForm }) => {
   const sessionUser = useSelector((state) => state.session.user);
   const {questionId} = useParams();
   const [commentText, setCommentText] = useState("");
-  const comments = useSelector(state => state.comments.commentsList)
+  // const comments = useSelector(state => state.comments.commentsList)
   // console.log(answerId)
   
 
   // console.log(comments)
   //   console.log(data)
-  useEffect(() => {
-    dispatch(getComments(answerId))
-  },[dispatch])
+  // useEffect(() => {
+  //   dispatch(getComments(answerId))
+  // },[dispatch])
   
   
 
@@ -70,10 +70,13 @@ const CreateCommentForm = ({answerId, hideForm }) => {
           </form>
         </div>
       </div>
-      <div className="commentsList">
-        {comments &&
-          comments.map((comment) => <AnswerComments comment={comment} hideForm={hideForm} />)}
-            {/* // <div className="comment" key={comment.id}>
+        <AnswerComments
+          hideForm={hideForm}
+          answerId={answerId}
+        />
+        {/* {comments &&
+          comments.map((comment) => <AnswerComments comment={comment} hideForm={hideForm} answerId={answerId}/>)} */}
+        {/* // <div className="comment" key={comment.id}>
             //   <h4>
             //     <i className="fas fa-user-circle"></i>
 
@@ -105,8 +108,6 @@ const CreateCommentForm = ({answerId, hideForm }) => {
                 </div>
               </div>
             </div> */}
-          
-      </div>
     </div>
   ) : (
     ""

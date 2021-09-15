@@ -2,24 +2,35 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
 
-import { removeComment } from "../../store/comments";
+import { removeComment, getComments } from "../../store/comments";
 
 
-const AnswerComments = ({ comment, hideForm }) => {
+const AnswerComments = ({ hideForm, answerId }) => {
     const dispatch = useDispatch();
     const history = useHistory();
     const sessionUser = useSelector((state) => state.session.user);
     const { questionId } = useParams();
+  
 
-    const handleDelete = async(e) => {
-        e.preventDefault()
-         const deletedComment = await dispatch(removeComment(comment.id));
-        //  return hideForm();
-    }
+    const comments = useSelector((state) => state.comments.commentsList);
+
+
+     useEffect(() => {
+       dispatch(getComments(answerId));
+     }, [dispatch]);
+
+    // const handleDelete = async(e) => {
+    //     e.preventDefault()
+    //      const deletedComment = await dispatch(removeComment(comment?.id));
+    //     //  return hideForm();
+    // }
 
 
     return (
-          <div className="comment" key={comment.id}>
+      <div className="commentsList">
+        {comments &&
+          comments.map((comment) => (
+            <div className="comment" key={comment.id}>
               <h4>
                 <i className="fas fa-user-circle"></i>
 
@@ -43,11 +54,23 @@ const AnswerComments = ({ comment, hideForm }) => {
                   <button>
                     <i className="fas fa-ellipsis-h"></i>
                   </button>
-                  {sessionUser?.id === comment.userId ? <button onClick={handleDelete}></button> : ''}
+                  {sessionUser?.id === comment.userId ? (
+                    <button onClick={async(e) => {
+                        e.preventDefault();
+                        const deletedComment = await dispatch(
+                          removeComment(comment?.id)
+                        );
+                        
+                    }}></button>
+                  ) : (
+                    ""
+                  )}
                 </div>
               </div>
             </div>
-    )
+          ))}
+      </div>
+    );
 }
 
 
