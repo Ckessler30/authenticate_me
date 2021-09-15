@@ -43,7 +43,10 @@ const EditQuestionForm = ({question}) => {
           <div className="editQuestionFormInner">
             <form className="editQuestionInputs" onSubmit={handleSubmit}>
               <div className="editQuestionTop">
-                <button onClick={() => setShowEditQuestion(false)}>
+                <button
+                  onClick={() => setShowEditQuestion(false)}
+                  className="xButton"
+                >
                   <i class="fas fa-times"></i>
                 </button>
                 <h2>Edit Question</h2>
@@ -62,7 +65,11 @@ const EditQuestionForm = ({question}) => {
                 >
                   Cancel
                 </button>
-                <button type="submit" className="update-buttons" disabled={question.title === title}>
+                <button
+                  type="submit"
+                  className="update-buttons"
+                  disabled={question.title === title}
+                >
                   Save
                 </button>
               </div>
