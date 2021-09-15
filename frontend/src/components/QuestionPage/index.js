@@ -7,6 +7,7 @@ import { getQuestions } from "../../store/questions"
 import { getAnswers } from "../../store/answers"
 import CreateAnswerForm from "../CreateAnswer"
 import CreateCommentForm from "../CreateComment"
+import { getComments } from "../../store/comments"
 
 
 
@@ -35,6 +36,7 @@ function QuestionPage () {
     useEffect(() => {
       dispatch(getAnswers())  
       dispatch(getQuestions());
+      dispatch(getComments())
     }, [dispatch]);
 
     // console.log(question)
@@ -116,7 +118,7 @@ function QuestionPage () {
                 <div className="commentsSection">
                   <button onClick={() => setShowComments(!showComments)}>comments</button>
                   {showComments && 
-                    <CreateCommentForm hideForm={() => setShowAnswerForm(false)} answerId={answer.id} />
+                    <CreateCommentForm hideForm={() => setShowComments(false)} answerId={answer.id} />
                   }
                 </div>
               </div>

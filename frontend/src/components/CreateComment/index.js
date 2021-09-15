@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { createNewComment, getComments } from "../../store/comments";
 
 import { removeComment } from "../../store/comments";
@@ -9,6 +9,7 @@ import "./newComment.css";
 
 const CreateCommentForm = ({answerId, hideForm }) => {
   const dispatch = useDispatch();
+  const history = useHistory()
   const sessionUser = useSelector((state) => state.session.user);
   const {questionId} = useParams();
   const [commentText, setCommentText] = useState("");
@@ -40,6 +41,8 @@ const CreateCommentForm = ({answerId, hideForm }) => {
 
     if(createdComment){
       setCommentText("")
+      history.push(`/questions/${questionId}`)
+      console.log(history)
     }
     
   };
@@ -47,10 +50,7 @@ const CreateCommentForm = ({answerId, hideForm }) => {
     e.preventDefault();
     hideForm();
   };
-   const deleteComment = async (e) => {
-     e.preventDefault();
-     const deletedComment = await dispatch(removeComment());
-   };
+
 
   return hideForm ? (
     <div className="commentsSection">
@@ -102,6 +102,7 @@ const CreateCommentForm = ({answerId, hideForm }) => {
                   {sessionUser.id === comment.userId ? <button onClick={async(e) => {
                       e.preventDefault()
                       const deletedComment= await dispatch(removeComment(comment.id))
+                      return hideForm()
                   }}></button> : ''}
                 </div>
               </div>
