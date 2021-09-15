@@ -37,7 +37,6 @@ function QuestionPage () {
     useEffect(() => {
       dispatch(getAnswers())  
       dispatch(getQuestions());
-      dispatch(getComments())
     }, [dispatch]);
 
     // console.log(question)

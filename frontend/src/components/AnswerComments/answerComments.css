@@ -1,0 +1,8 @@
+.bottomCommentRight{
+    display: flex;
+    gap: .25rem;
+}
+.bottomCommentLeft{
+    display: flex;
+    gap: .25rem;
+}

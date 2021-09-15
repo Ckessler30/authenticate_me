@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
 import CreateCommentForm from "../CreateComment";
+import DeleteForm from "../DeletePopup";
 
 
 const AnswerArea = ({ answer }) => {
@@ -44,7 +45,7 @@ const AnswerArea = ({ answer }) => {
             <button>
               <i className="fas fa-share"></i>
             </button>
-            {sessionUser?.id === answer.userId ? <button> </button> : ""}
+            {sessionUser?.id === answer.userId && <DeleteForm answerId={answer.id} deleteType={"answer"}/>}
           </div>
         </div>
         <CreateCommentForm answerId={answer.id} />

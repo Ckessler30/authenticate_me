@@ -2,6 +2,7 @@ import { csrfFetch } from "./csrf";
 
 const LOAD = "answers/LOAD"
 const ADD = "answers/ADD"
+const REMOVE = "answers/REMOVE"
 
 const load = (answerList) => ({
     type: LOAD,
@@ -12,6 +13,27 @@ const createAnswer = (answer) => ({
     type: ADD,
     answer
 })
+
+const remove = (answerId) => ({
+  type: REMOVE,
+  answerId
+})
+
+export const removeAnswer = (answerId) => async dispatch => {
+  const response = await csrfFetch(`/api/answers/${answerId}`, {
+    method: "DELETE",
+    headers: { 'Content-Type': 'application/json'},
+    body: JSON.stringify({
+      answerId
+    })
+  })
+
+  if(response.ok){
+    const removedAnswerId = await response.json()
+    dispatch(remove(removedAnswerId))
+    return removedAnswerId
+  }
+}
 
 export const getAnswers = () => async dispatch => {
     const response = await fetch('/api/answers/')

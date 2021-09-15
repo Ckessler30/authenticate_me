@@ -101,7 +101,7 @@ function HomePage () {
                       </button>
                       
                       {sessionUser?.id === +question.userId && (
-                        <DeleteForm questionId={question.id} />
+                        <DeleteForm questionId={question.id} deleteType={"question"} />
                       )}
                     </div>
                   </div>

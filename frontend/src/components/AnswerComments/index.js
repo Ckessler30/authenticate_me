@@ -3,6 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
 
 import { removeComment, getComments } from "../../store/comments";
+import DeleteForm from "../DeletePopup";
+
+import "./answerComments.css"
 
 
 const AnswerComments = ({ hideForm, answerId }) => {
@@ -54,19 +57,8 @@ const AnswerComments = ({ hideForm, answerId }) => {
                   <button>
                     <i className="fas fa-ellipsis-h"></i>
                   </button>
-                  {sessionUser?.id === comment.userId ? (
-                    <button
-                      onClick={async (e) => {
-                        e.preventDefault();
-                        const deletedComment = await dispatch(
-                          removeComment(comment?.id)
-                        );
-                      }}
-                    >
-                      <i className="fas fa-trash-alt"></i>
-                    </button>
-                  ) : (
-                    ""
+                  {sessionUser?.id === comment.userId && (
+                    <DeleteForm commentId={comment.id} deleteType="comment" />
                   )}
                 </div>
               </div>
