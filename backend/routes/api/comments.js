@@ -9,12 +9,16 @@ const { requireAuth } = require("../../utils/auth");
 const commentValidators = require('../../validations/comments')
 
 router.get(
-  "/",
+  "/:id(\\d+)",
   asyncHandler(async (req, res) => {
+    const answerId = req.url.split('/')[1]
     const comments = await Comment.findAll({
-        include: User
-    })
-    return res.json(comments)
+      where:{
+        answerId
+      },
+      include: User,
+    });
+    return res.json(comments);
   })
 );
 

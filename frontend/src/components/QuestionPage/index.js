@@ -8,6 +8,7 @@ import { getAnswers } from "../../store/answers"
 import CreateAnswerForm from "../CreateAnswer"
 import CreateCommentForm from "../CreateComment"
 import { getComments } from "../../store/comments"
+import AnswerArea from "../AnswerArea"
 
 
 
@@ -81,48 +82,49 @@ function QuestionPage () {
             <h4>{answers.length} Answers</h4>
           </div>
           {answers &&
-            answers.map((answer) => (
-              <div className="answer" key={answer.id}>
-                <h5>
-                  <i className="fas fa-user-circle"></i>
+            answers.map((answer) => <AnswerArea answer={answer}/>)}
+              {/* // return(
+              // <div className="answer" key={answer.id}>
+              //   <h5>
+              //     <i className="fas fa-user-circle"></i>
 
-                  {answer.User?.username}
-                </h5>
-                <p>{answer.answerText}</p>
-                <div className="answerImg">
-                  <img src={answer.answerImg} alt="" />
-                </div>
-                <p>{answer.votes}</p>
-                <div className="bottomAnswerButtons">
-                  <div className="bottomAnswerButtonsLeft">
-                    <button>
-                      <i className="fas fa-arrow-up"></i>
-                    </button>
-                    <button>
-                      <i className="fas fa-arrow-down"></i>
-                    </button>
-                    <button>
-                      <i className="fas fa-sync"></i>
-                    </button>
-                    <button>
-                      <i className="fas fa-comment"></i>
-                    </button>
-                  </div>
-                  <div className="bottomAnswerButtonsRight">
-                    <button>
-                      <i className="fas fa-share"></i>
-                    </button>
-                    {sessionUser.id === answer.userId ? <button> </button> : ''}
-                  </div>
-                </div>
-                <div className="commentsSection">
-                  <button onClick={() => setShowComments(!showComments)}>comments</button>
-                  {showComments && 
-                    <CreateCommentForm hideForm={() => setShowComments(false)} answerId={answer.id} />
-                  }
-                </div>
-              </div>
-            ))}
+              //     {answer.User?.username}
+              //   </h5>
+              //   <p>{answer.answerText}</p>
+              //   <div className="answerImg">
+              //     <img src={answer.answerImg} alt="" />
+              //   </div>
+              //   <p>{answer.votes}</p>
+              //   <div className="bottomAnswerButtons">
+              //     <div className="bottomAnswerButtonsLeft">
+              //       <button>
+              //         <i className="fas fa-arrow-up"></i>
+              //       </button>
+              //       <button>
+              //         <i className="fas fa-arrow-down"></i>
+              //       </button>
+              //       <button>
+              //         <i className="fas fa-sync"></i>
+              //       </button>
+              //       <button>
+              //         <i className="fas fa-comment"></i>
+              //       </button>
+              //     </div>
+              //     <div className="bottomAnswerButtonsRight">
+              //       <button>
+              //         <i className="fas fa-share"></i>
+              //       </button>
+              //       {sessionUser?.id === answer.userId ? <button> </button> : ''}
+              //     </div>
+              //   </div>
+              //   <div className="commentsSection">
+              //     <button onClick={() => setShowComments(!showComments)}>comments</button>
+              //     {showComments &&  */}
+              {/* //       <CreateCommentForm hideForm={() => setShowComments(false)} answerId={answer.id} />
+              //     }
+              //   </div>
+              // </div> */}
+            
         </div>
       </main>
     );

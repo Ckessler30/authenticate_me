@@ -13,7 +13,7 @@ const questionValidations = require('../../validations/questions')
 
 router.post('/new', questionValidations.validateCreate, requireAuth, asyncHandler(async(req, res) => {
     const { userId, title, questionText, questionImg} = req.body
-    console.log(typeof userId)
+    // console.log(typeof userId)
     const test = await Question.create({
         userId,
         title,

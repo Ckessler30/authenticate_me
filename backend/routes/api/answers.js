@@ -11,7 +11,7 @@ const answerValidations = require('../../validations/answers')
 
 router.get('/', asyncHandler(async(req, res) => {
     const { questionId} = req.body
-    console.log('QUESTION ID',questionId)
+    // console.log('QUESTION ID',questionId)
     const answers = await Answer.findAll({
         include: User, Question
     })

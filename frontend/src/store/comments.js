@@ -36,8 +36,9 @@ export const removeComment = (commentId) => async dispatch => {
     }
 }
 
-export const getComments = () => async dispatch => {
-    const response = await fetch('/api/comments/')
+export const getComments = (answerId) => async dispatch => {
+    // console.log("JJJJJJJ",answerId)
+    const response = await fetch(`/api/comments/${answerId}`)
     if(response.ok){
         const list = await response.json()
         dispatch(load(list))
