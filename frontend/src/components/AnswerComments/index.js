@@ -34,7 +34,7 @@ const AnswerComments = ({ hideForm, answerId }) => {
               <h4>
                 <i className="fas fa-user-circle"></i>
 
-                {comment.User.username}
+                {comment.User?.username}
               </h4>
               <p>{comment.commentText}</p>
               <div className="bottomCommentButtons">

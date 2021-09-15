@@ -30,9 +30,10 @@ export const removeComment = (commentId) => async dispatch => {
     })
 
     if(response.ok){
-        const commentId2 = response.json()
+        const commentId2 = await response.json()
         dispatch(remove(commentId2))
         // console.log(data)
+        return commentId2
     }
 }
 
@@ -71,7 +72,7 @@ const commentReducer = (state=initialState, action) => {
             action.commentsList.forEach(comment => {
                 allComments[comment.id] = comment
             })
-
+                // console.log("LOOK HERE", action.commentsList)
             return {
                 ...allComments,
                 ...state,
@@ -80,8 +81,19 @@ const commentReducer = (state=initialState, action) => {
         }
         case REMOVE: {
             const newState = {...state}
+            // console.log("HEREE",newState.commentsList)
+            const newCommentsList = [...newState.commentsList]
+            const removeComment = newCommentsList.filter(comment =>  comment.id === action.commentId)
+            removeComment.forEach(comment => newCommentsList.splice(newCommentsList.findIndex(comment2 => comment2.id === comment.id), 1))
+            // console.log("HERE2", newCommentsList)
             delete newState[action.commentId]
+            newState.commentsList = newCommentsList
             return newState
+        }
+        case ADD: {
+            const newestState = { ...state, [action.comment.id]: action.comment}
+            newestState.commentsList.push(action.comment)
+            return newestState
         }
         default:
             return state

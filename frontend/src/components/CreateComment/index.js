@@ -39,8 +39,8 @@ const CreateCommentForm = ({answerId, hideForm }) => {
 
     if(createdComment){
       setCommentText("")
-      history.push(`/questions/${questionId}`)
-      console.log(history)
+      // history.push(`/questions/${questionId}`)
+      // console.log(history)
     }
     
   };
