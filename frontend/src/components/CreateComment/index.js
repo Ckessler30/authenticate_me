@@ -14,6 +14,7 @@ const CreateCommentForm = ({answerId, hideForm }) => {
   const sessionUser = useSelector((state) => state.session.user);
   const {questionId} = useParams();
   const [commentText, setCommentText] = useState("");
+  const [showComments, setShowComments] = useState(false);
   // const comments = useSelector(state => state.comments.commentsList)
   // console.log(answerId)
   
@@ -50,8 +51,11 @@ const CreateCommentForm = ({answerId, hideForm }) => {
   };
 
 
-  return hideForm ? (
+  return (
     <div className="commentsSection">
+      <button onClick={() => setShowComments(!showComments)}>Comments</button>
+      {showComments && 
+      <div> 
       <div className="createNewComment">
         <div className="createNewCommentInner">
           <form onSubmit={handleSubmit} className="createCommentInputs">
@@ -70,16 +74,15 @@ const CreateCommentForm = ({answerId, hideForm }) => {
           </form>
         </div>
       </div>
-        <AnswerComments
-          hideForm={hideForm}
-          answerId={answerId}
-        />
-        {/* {comments &&
+      <AnswerComments hideForm={hideForm} answerId={answerId} />
+      </div>
+      }
+      {/* {comments &&
           comments.map((comment) => <AnswerComments comment={comment} hideForm={hideForm} answerId={answerId}/>)} */}
-        {/* // <div className="comment" key={comment.id}>
+      {/* // <div className="comment" key={comment.id}>
             //   <h4>
             //     <i className="fas fa-user-circle"></i>
-
+            
             //     {comment.User.username}
             //   </h4>
             //   <p>{comment.commentText}</p>
@@ -101,16 +104,14 @@ const CreateCommentForm = ({answerId, hideForm }) => {
             //         <i className="fas fa-ellipsis-h"></i>
             //       </button>
             //       {sessionUser?.id === comment.userId ? <button onClick={async(e) => {
-                      e.preventDefault()
-                      const deletedComment= await dispatch(removeComment(comment.id))
-                      return hideForm()
-                  }}></button> : ''}
-                </div>
-              </div>
-            </div> */}
-    </div>
-  ) : (
-    ""
+              e.preventDefault()
+              const deletedComment= await dispatch(removeComment(comment.id))
+              return hideForm()
+            }}></button> : ''}
+            </div>
+            </div>
+          </div> */}
+          </div>
   );
 };
 

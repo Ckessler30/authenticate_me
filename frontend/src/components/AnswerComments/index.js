@@ -55,13 +55,16 @@ const AnswerComments = ({ hideForm, answerId }) => {
                     <i className="fas fa-ellipsis-h"></i>
                   </button>
                   {sessionUser?.id === comment.userId ? (
-                    <button onClick={async(e) => {
+                    <button
+                      onClick={async (e) => {
                         e.preventDefault();
                         const deletedComment = await dispatch(
                           removeComment(comment?.id)
                         );
-                        
-                    }}></button>
+                      }}
+                    >
+                      <i className="fas fa-trash-alt"></i>
+                    </button>
                   ) : (
                     ""
                   )}

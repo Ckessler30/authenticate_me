@@ -47,7 +47,8 @@ const AnswerArea = ({ answer }) => {
             {sessionUser?.id === answer.userId ? <button> </button> : ""}
           </div>
         </div>
-        <div className="commentsSection">
+        <CreateCommentForm answerId={answer.id} />
+        {/* <div className="commentsSection">
           <button onClick={() => setShowComments(!showComments)}>
             comments
           </button>
@@ -57,7 +58,7 @@ const AnswerArea = ({ answer }) => {
               answerId={answer.id}
             />
           )}
-        </div>
+        </div> */}
       </div>
     );
 }
