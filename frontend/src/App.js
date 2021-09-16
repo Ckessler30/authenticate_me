@@ -15,6 +15,8 @@ function App() {
 
   const dispatch = useDispatch()
   const [isLoaded, setIsLoaded] = useState(false)
+  const sessionUser = useSelector((state) => state.session.user);
+  console.log("HERE",sessionUser)
   
   
   // const questions = useSelector((state) => {
@@ -29,33 +31,35 @@ function App() {
     // dispatch(getQuestions())
   }, [dispatch])
   
-  return (
-    isLoaded && (
-      <>
-        <Navigation isLoaded={isLoaded} />
-        <main>
-          {isLoaded && (
-            <Switch>
-              <Route exact path="/">
-                <HomePage />
-              </Route>
-              <Route path="/login">
-                <LoginFormPage />
-              </Route>
-              <Route path="/signup">
-                <SignupFormPage />
-              </Route>
-              <Route path="/questions/:questionId">
-                <QuestionPage />
-              </Route>
-              <Route path="/filtered/questions">
-                <FilteredQuestions />
-              </Route>
-            </Switch>
-          )}
-        </main>
-      </>
-    )
+  return isLoaded && sessionUser ? (
+    <>
+      <Navigation isLoaded={isLoaded} />
+      <main>
+        {isLoaded && (
+          <Switch>
+            <Route exact path="/">
+              <HomePage />
+            </Route>
+
+            <Route path="/questions/:questionId">
+              <QuestionPage />
+            </Route>
+            <Route path="/filtered/questions">
+              <FilteredQuestions />
+            </Route>
+          </Switch>
+        )}
+      </main>
+    </>
+  ) : (
+    <Switch>
+      <Route path="/">
+        <LoginFormPage />
+      </Route>
+      <Route path="/signup">
+        <SignupFormPage />
+      </Route>
+    </Switch>
   );
 
 }
