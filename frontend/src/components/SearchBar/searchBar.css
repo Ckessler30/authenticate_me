@@ -1,73 +1,22 @@
-
-a{
-     text-decoration: none;
-     
-}
-
-.navBar a{
-    color: #979797;
-}
-
-.navBar{
+.searchInputs{
     display: flex;
-    justify-content: space-around;
-    align-items: center;
-    font-size: 1.75rem;
-    margin: 2rem;
-    margin-left: 1rem;
-    gap: .5rem;
-    width: 100%;
-    max-width: 70rem;
-    
-
-    
-
-}
-
-
-.navs{
-    display: flex;
-    gap: 2.5rem;
-}
-
-.navs>img{
-    height: 2rem;
-    width: 6rem;
-}
-.loginLogout{
-    display: flex;
-    flex-direction: column;
     align-items: center;
     gap: .25rem;
 }
-.navBarLinks{
-    font-size: 20px;
-}
 
-
-.navBarLinks:hover{
-    font-weight: bolder;
-}
-
-.navBar1{
+.searchIcon{
     display: flex;
-    align-items: center;
-    margin: -.5rem;
-    justify-content: center;
-    background-color: white;
-    height: 3.8rem;
-    
-   
-    /* width: 100%; */
+    /* flex-direction: column; */
+    align-self: center;
 }
 
-.navs>button{
- align-items: center;
-  background-color: #c82727;
+.searchButtons {
+  align-items: center;
+  background-color: #ffffffe8;
   border: 0;
   border-radius: 100px;
   box-sizing: border-box;
-  color: #ffffff;
+  color: #c8c8c8;
   cursor: pointer;
   display: inline-flex;
   font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
@@ -75,8 +24,9 @@ a{
   font-weight: 600;
   justify-content: center;
   line-height: 20px;
-  max-width: 480px;
-  min-height: 40px;
+  max-width: 30px;
+  min-height: 30px;
+  max-height: 30px;
   min-width: 0px;
   overflow: hidden;
   padding: 0px;
@@ -90,15 +40,42 @@ a{
   vertical-align: middle;
 }
 
-.navs>button:hover,
-.navs>button:focus { 
-  background-color: #aa2222;
+.searchButtons:hover,
+.searchButtons:focus { 
+  background-color: #c82727;
   color: #ffffff;
 }
 
-.navs>button:active {
+.searchButtons:active {
   background: #09223b;
   color: rgb(255, 255, 255, .7);
 }
 
+.searchButtons:disabled { 
+  cursor: not-allowed;
+  background: rgba(0, 0, 0, .08);
+  color: rgba(0, 0, 0, .3);
+}
 
+.dualSearchButtons{
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+}
+
+.searchInputs>input{
+  height: 2rem;
+font-size: 1rem;
+    border-top-style: hidden;   
+    border-right-style: hidden;    
+    border-left-style: hidden;  
+    border-bottom-style: groove;
+    border: 2px solid #c8c8c8;
+    border-radius: 10px;
+    padding: .4rem;
+}
+
+.searchInputs>input:focus{
+  
+outline: none;
+}
