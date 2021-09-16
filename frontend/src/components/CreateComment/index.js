@@ -56,6 +56,7 @@ const CreateCommentForm = ({answerId, hideForm }) => {
       <button onClick={() => setShowComments(!showComments)}>Comments</button>
       {showComments && 
       <div> 
+      {sessionUser &&  
       <div className="createNewComment">
         <div className="createNewCommentInner">
           <form onSubmit={handleSubmit} className="createCommentInputs">
@@ -73,7 +74,7 @@ const CreateCommentForm = ({answerId, hideForm }) => {
             </div>
           </form>
         </div>
-      </div>
+      </div> }
       <AnswerComments hideForm={hideForm} answerId={answerId} commentText={commentText} />
       </div>
       }
