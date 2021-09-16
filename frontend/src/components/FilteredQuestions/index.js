@@ -56,35 +56,41 @@ export default function FilteredQuestions() {
                 <NavLink key={question.id} to={`/questions/${question.id}`}>
                   <div className="questionHeader">
                     <div className="questionUser">
-                      <h3>{question?.User?.username}</h3>
+                      <h3>
+                        <i className="fas fa-user-astronaut" id="astro"></i>
+                        {" " + question?.User?.username}
+                      </h3>
                       <p>{finalDate ? finalDate : "now"}</p>
                     </div>
-                    <h3>{question.title}</h3>
-                    <p>{question.questionText}</p>
+                    <h3 className="questionTitle">{question.title}</h3>
+                    <p className="questionText">{question.questionText}</p>
                   </div>
-                  <div className="questionImg">
-                    <img src={question.questionImg} alt="" />
-                  </div>
+                  <div
+                    className="questionImg"
+                    style={{
+                      backgroundImage: `url(${question.questionImg}) `,
+                    }}
+                  ></div>
                 </NavLink>
                 <div className="questionFooter">
                   <div className="questionFootButtonsLeft">
-                    <button>
+                    <button className="questionButtons">
                       <i className="fas fa-arrow-alt-circle-up"></i>
 
                       {question.votes}
                     </button>
-                    <button>
+                    <button className="questionButtons">
                       <i className="fas fa-arrow-down"></i>
                     </button>
-                    <button>
+                    <button className="questionButtons">
                       <i className="fas fa-sync-alt"></i>
                     </button>
-                    <button>
+                    <button className="questionButtons">
                       <i class="fas fa-comment"></i>
                     </button>
                   </div>
                   <div className="questionFootButtonsRight">
-                    <button>
+                    <button className="questionButtons">
                       <i className="fas fa-share"></i>
                     </button>
 

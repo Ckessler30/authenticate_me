@@ -51,19 +51,19 @@ const AnswerComments = ({ hideForm, answerId }) => {
                 <EditCommentForm comment={comment}/>
                 <div className="bottomCommentButtons">
                   <div className="bottomCommentLeft">
-                    <button>
+                    <button className="newCommentButtons">
                       <i className="fas fa-arrow-alt-circle-up"></i>
                       UpVote
                     </button>
-                    <button>
+                    <button className="newCommentButtons">
                       <i className="fas fa-reply"></i> Reply
                     </button>
                   </div>
                   <div className="bottomCommentRight">
-                    <button>
+                    <button className="newCommentButtons">
                       <i className="fas fa-arrow-down"></i>
                     </button>
-                    <button>
+                    <button className="newCommentButtons">
                       <i className="fas fa-ellipsis-h"></i>
                     </button>
                     {sessionUser?.id === comment.userId && (

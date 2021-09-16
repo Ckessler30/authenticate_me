@@ -43,25 +43,30 @@ function HomePage () {
             {sessionUser && (
               <div className="questionButton">
                 <button onClick={() => setShowForm(true)}>
-                  <div className="questionProfile">{sessionUser.username}</div>
-                      <h3>What is your question or link</h3>
+                  <div className="questionProfile">
+                    <i className="far fa-user-circle"></i>
+
+                    {" "+sessionUser.username}
+                  </div>
+                  <h3>What is your question or link</h3>
                 </button>
-                  {showForm && <CreateQuestionForm hideForm={() => setShowForm(false)} /> }
+                {showForm && (
+                  <CreateQuestionForm hideForm={() => setShowForm(false)} />
+                )}
               </div>
             )}
             {questions.map((question) => {
-              
-                // console.log("questions", questions)
-                const dateParts = question.createdAt.split("-");
-                const day = dateParts[2].split("T")[0];
-                // console.log(dateParts)
-                // console.log(day)
-                const newDate = new Date(dateParts[0], dateParts[1] - 1, day);
-                 let finalDate = newDate
-                  .toDateString()
-                  .split(" ")[1]
-                  .concat(newDate.toDateString().split(" ")[2]);
-              
+              // console.log("questions", questions)
+              const dateParts = question.createdAt.split("-");
+              const day = dateParts[2].split("T")[0];
+              // console.log(dateParts)
+              // console.log(day)
+              const newDate = new Date(dateParts[0], dateParts[1] - 1, day);
+              let finalDate = newDate
+                .toDateString()
+                .split(" ")[1]
+                .concat(newDate.toDateString().split(" ")[2]);
+
               // console.log(finalDate)
 
               return (
@@ -69,43 +74,55 @@ function HomePage () {
                   <NavLink key={question.id} to={`/questions/${question.id}`}>
                     <div className="questionHeader">
                       <div className="questionUser">
-                        <h3>{question?.User?.username}</h3>
+                        <h3>
+                          <i className="fas fa-user-astronaut" id="astro"></i>
+
+                          {" "+question?.User?.username}
+                        </h3>
                         <p>{finalDate ? finalDate : "now"}</p>
                       </div>
-                      <h3>{question.title}</h3>
-                      <p>{question.questionText}</p>
+                      <h3 className="questionTitle">{question.title}</h3>
+                      <p className="questionText">{question.questionText}</p>
                     </div>
-                    <div className="questionImg">
-                      <img src={question.questionImg} alt="" />
+                    <div
+                      className="questionImg"
+                      style={{
+                        backgroundImage: `url(${question.questionImg}) `,
+                      }}
+                    >
+                      {/* <img src={question.questionImg} alt="" /> */}
                     </div>
                   </NavLink>
                   <div className="questionFooter">
                     <div className="questionFootButtonsLeft">
-                      <button>
+                      <button className="questionButtons">
                         <i className="fas fa-arrow-alt-circle-up"></i>
 
                         {question.votes}
                       </button>
-                      <button>
+                      <button className="questionButtons">
                         <i className="fas fa-arrow-down"></i>
                       </button>
-                      <button>
+                      <button className="questionButtons">
                         <i className="fas fa-sync-alt"></i>
                       </button>
-                      <button>
+                      <button className="questionButtons">
                         <i class="fas fa-comment"></i>
                       </button>
                     </div>
                     <div className="questionFootButtonsRight">
-                      <button>
+                      <button className="questionButtons">
                         <i className="fas fa-share"></i>
                       </button>
-                      
+
                       {sessionUser?.id === +question.userId && (
-                        <DeleteForm questionId={question.id} deleteType={"question"} />
+                        <DeleteForm
+                          questionId={question.id}
+                          deleteType={"question"}
+                        />
                       )}
                       {sessionUser?.id === +question.userId && (
-                        <EditQuestionForm question={question}/>
+                        <EditQuestionForm question={question} />
                       )}
                     </div>
                   </div>

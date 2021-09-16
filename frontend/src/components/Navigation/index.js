@@ -22,25 +22,18 @@ function Navigation({ isLoaded  }){
     sessionLinks = (
       <ProfileButton user={sessionUser} />
     );
-  } else {
-    sessionLinks = (
-      <>
-      <div className="loginLogout">
-        <NavLink className="navBarLinks" to="/login">Log In</NavLink>
-        <NavLink className="navBarLinks" to="/signup">Sign Up</NavLink>
-        </div>
-      </>
-    );
   }
 
   return (
     <div className="navBar1">
       <ul className="navBar">
         <li className="navs">
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Quora_logo_2015.svg/1200px-Quora_logo_2015.svg.png"
-            alt=""
-          />
+          <NavLink to="/">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Quora_logo_2015.svg/1200px-Quora_logo_2015.svg.png"
+              alt=""
+            />
+          </NavLink>
         </li>
         <li className="navs">
           <NavLink exact to="/">
@@ -68,7 +61,7 @@ function Navigation({ isLoaded  }){
           </NavLink>
         </li>
         <li className="navs">
-          <SearchBar  />
+          <SearchBar />
           {/* <label htmlFor="search">Search</label>
           <input type="text" placeholder="Search..." value={searchInputVal} onChange={(e) => setSearchInputVal(e.target.value)}/> */}
         </li>

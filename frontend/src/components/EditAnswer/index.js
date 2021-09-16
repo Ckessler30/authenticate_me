@@ -34,7 +34,7 @@ const EditAnswerForm = ({ answer }) => {
   };
   return (
     <div className="editQuestionFormBox">
-      <button onClick={() => setShowEditAnswer(true)}>
+      <button onClick={() => setShowEditAnswer(true)} className="questionButtons">
         <i className="fas fa-pen-alt"></i>Edit
       </button>
       {showEditAnswer && (

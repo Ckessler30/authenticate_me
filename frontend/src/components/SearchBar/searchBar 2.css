@@ -1,41 +1,32 @@
-.bottomCommentRight{
+.searchInputs{
     display: flex;
-    gap: .25rem;
-}
-.bottomCommentLeft{
-    display: flex;
+    align-items: center;
     gap: .25rem;
 }
 
-.comment{
-    font-size: 1.1rem;
-    border-top: 2px solid lightgrey;
+.searchIcon{
+    display: flex;
+    /* flex-direction: column; */
+    align-self: center;
 }
 
-.comment p{
-    font-size: 1.2rem;
-}
-
-.comment p h4{
-    margin-left: 1rem;
-}
-
-.newCommentButtons {
+.searchButtons {
   align-items: center;
-  background-color: #0A66C2;
+  background-color: #ffffffe8;
   border: 0;
   border-radius: 100px;
   box-sizing: border-box;
-  color: #ffffff;
+  color: #c8c8c8;
   cursor: pointer;
   display: inline-flex;
   font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 600;
   justify-content: center;
   line-height: 20px;
-  max-width: 65px;
-  min-height: 40px;
+  max-width: 30px;
+  min-height: 30px;
+  max-height: 30px;
   min-width: 0px;
   overflow: hidden;
   padding: 0px;
@@ -49,13 +40,42 @@
   vertical-align: middle;
 }
 
-.newCommentButtons:hover,
-.newCommentButtons:focus { 
-  background-color: #16437E;
+.searchButtons:hover,
+.searchButtons:focus { 
+  background-color: #c82727;
   color: #ffffff;
 }
 
-.newCommentButtons:active {
+.searchButtons:active {
   background: #09223b;
   color: rgb(255, 255, 255, .7);
+}
+
+.searchButtons:disabled { 
+  cursor: not-allowed;
+  background: rgba(0, 0, 0, .08);
+  color: rgba(0, 0, 0, .3);
+}
+
+.dualSearchButtons{
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+}
+
+.searchInputs>input{
+  height: 2rem;
+font-size: 1rem;
+    border-top-style: hidden;   
+    border-right-style: hidden;    
+    border-left-style: hidden;  
+    border-bottom-style: groove;
+    border: 2px solid #c8c8c8;
+    border-radius: 10px;
+    padding: .4rem;
+}
+
+.searchInputs>input:focus{
+  
+outline: none;
 }
