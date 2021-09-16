@@ -1,14 +1,57 @@
+.signUpOuter{
+    position: fixed;
+     top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, .2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .signUpForm{
+      position: relative;
+    padding: 32px;
+    width: 100%;
+    max-width: 640px;
+    background-color: white;
     display: flex;
     flex-direction: column;
+    border-radius: 5px;
     align-items: center;
-    gap: 1.2rem;
-    
 }
+    
+.signUpInputs{
+     display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.signUpTop>h3{
+    color: grey;
+}
+
 
 .signUpForm input{
     height: 2.5rem;
     width: 25rem;
 }
 
+
+.signUpTop{
+    display: flex;
+    justify-content: center;
+      border-bottom: 2px solid #e6e6e6;
+      width: 100%;
+      font-size: 1.2rem;
+}
+
+.signUpButtons{
+    display: flex;
+    align-self: flex-end;
+    gap: .25rem;
+}
 
