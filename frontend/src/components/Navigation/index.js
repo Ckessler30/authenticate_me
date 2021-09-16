@@ -7,12 +7,14 @@ import './Navigation.css';
 import CreateQuestionForm from '../CreateQuestion';
 import SearchBar from '../SearchBar';
 
-function Navigation({ isLoaded }){
+function Navigation({ isLoaded  }){
+  
   const sessionUser = useSelector(state => state.session.user);
 
   const [showForm, setShowForm] = useState(false);
 
   const [searchInputVal, setSearchInputVal] = useState('')
+
 
 
   let sessionLinks;
@@ -79,9 +81,10 @@ function Navigation({ isLoaded }){
         </li>
       </ul>
       {sessionUser && (
-        <div> 
-          {showForm && <CreateQuestionForm hideForm={() => setShowForm(false)} /> }
-
+        <div>
+          {showForm && (
+            <CreateQuestionForm hideForm={() => setShowForm(false)} />
+          )}
         </div>
       )}
     </div>

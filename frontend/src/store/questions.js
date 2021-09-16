@@ -3,11 +3,13 @@ import { csrfFetch } from "./csrf";
 const LOAD = "questions/LOAD";
 const ADD = "questions/ADD";
 const REMOVE = "questions/REMOVE";
+const FILTER = "questions/FILTER"
 
 const load = (list) => ({
   type: LOAD,
   list,
 });
+
 
 const createQuestion = (question) => ({
   type: ADD,
@@ -18,6 +20,18 @@ const remove = (questionId) => ({
   type: REMOVE,
   questionId,
 });
+
+const loadFiltered = (filteredList) => ({
+  type: FILTER,
+  filteredList
+})
+
+export const filteredQuestions = (questions) => async dispatch => {
+  console.log(questions)
+  dispatch(loadFiltered(questions))
+
+}
+
 
 export const editQuestion = (questionDetails) => async dispatch => {
   const { title, questionText, questionId } = questionDetails
@@ -101,6 +115,18 @@ const questionReducer = (state = initalState, action) => {
         list: action.list,
       };
     }
+    case FILTER: {
+      let filteredState = { ...state }
+      if(filteredState.filteredList){
+        filteredState.filteredList = [...action.filteredList]
+        return filteredState
+      }else{
+        const filteredQuestions = [...action.filteredList]
+        console.log("LOOK HERE",filteredQuestions)
+        const updatedFilteredState = { ...state, filteredList: filteredQuestions}
+        return updatedFilteredState
+      }
+      }
     case ADD: {
       if(!state[action.question.id]){
         let newState = {...state, [action.question.id]: action.question}

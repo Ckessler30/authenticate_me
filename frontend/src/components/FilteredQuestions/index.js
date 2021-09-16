@@ -14,9 +14,10 @@ export default function FilteredQuestions() {
      const sessionUser = useSelector((state) => state.session.user);
      const questions = useSelector((state) => {
        // console.log("STATE", state)
-       return state.questions.list;
+       return state.questions.filteredList;
      });
      // console.log("USER", sessionUser)
+     console.log(questions)
 
      const [showForm, setShowForm] = useState(false);
 
