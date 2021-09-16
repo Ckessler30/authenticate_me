@@ -5,11 +5,14 @@ import ProfileButton from './ProfileButton';
 import './Navigation.css';
 
 import CreateQuestionForm from '../CreateQuestion';
+import SearchBar from '../SearchBar';
 
 function Navigation({ isLoaded }){
   const sessionUser = useSelector(state => state.session.user);
 
   const [showForm, setShowForm] = useState(false);
+
+  const [searchInputVal, setSearchInputVal] = useState('')
 
 
   let sessionLinks;
@@ -61,7 +64,9 @@ function Navigation({ isLoaded }){
           </NavLink>
         </li>
         <li className="navs">
-          <input type="text" placeholder="Search..." />
+          <SearchBar  />
+          {/* <label htmlFor="search">Search</label>
+          <input type="text" placeholder="Search..." value={searchInputVal} onChange={(e) => setSearchInputVal(e.target.value)}/> */}
         </li>
         <li className="navs">{isLoaded && sessionLinks}</li>
         <li className="navs">
