@@ -50,7 +50,7 @@ function QuestionPage () {
             <h3>{question?.title}</h3>
             <div className="questionLinks">
               <div className="questionLinksLeft">
-                <button onClick={() => setShowAnswerForm(true)}>
+                <button onClick={() => setShowAnswerForm(true)} disabled={!sessionUser}>
                   <i class="fas fa-edit"></i> Answer
                 </button>
                 <button>

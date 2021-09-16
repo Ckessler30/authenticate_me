@@ -39,7 +39,7 @@ const CreateAnswerForm = ({ hideForm }) => {
     hideForm();
   };
 
-  return hideForm ? (
+  return hideForm && sessionUser ? (
     <div className="createNewAnswer">
       <div className="createNewAnswerInner">
         <div className="answerProfileHead">

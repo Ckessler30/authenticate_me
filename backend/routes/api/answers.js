@@ -3,7 +3,7 @@ const router = express.Router();
 const asyncHandler = require("express-async-handler");
 const { check, validationResult } = require("express-validator");
 
-const { User, Question, Answer, Comment } = require("../../db/models");
+const { User, Question, Answer, Comment, Vote } = require("../../db/models");
 const { requireAuth } = require("../../utils/auth");
 
 const answerValidations = require('../../validations/answers')
@@ -58,6 +58,18 @@ router.delete("/:id(\\d+)", requireAuth, asyncHandler(async(req, res) => {
         await comment.destroy()
       })
     }
+    // console.log("ABOUT TO HIT")
+    const votes = await Vote.findAll({
+      where: {answerId: 1}
+    })
+    // console.log("VOTES HERE", votes)
+
+    if(votes){
+      votes.forEach(async(vote) => {
+        await vote.destroy()
+      })
+    }
+
 
     await answer.destroy()
   }
