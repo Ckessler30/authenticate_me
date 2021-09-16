@@ -52,14 +52,16 @@ function App() {
       </main>
     </>
   ) : (
-    <Switch>
-      <Route path="/">
-        <LoginFormPage />
-      </Route>
-      <Route path="/signup">
-        <SignupFormPage />
-      </Route>
-    </Switch>
+    <main className="loginMain">
+      <Switch>
+        <Route exact path="/">
+          <LoginFormPage />
+        </Route>
+        <Route path="/signup">
+          <SignupFormPage />
+        </Route>
+      </Switch>
+    </main>
   );
 
 }
