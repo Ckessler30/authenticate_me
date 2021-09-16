@@ -16,13 +16,26 @@ const AnswerArea = ({ answer }) => {
 
 
 
+
+    const dateParts = answer.createdAt.split("-");
+    const day = dateParts[2].split("T")[0];
+    // console.log(dateParts)
+    // console.log(day)
+    const newDate = new Date(dateParts[0], dateParts[1] - 1, day);
+    let finalDate = newDate
+      .toDateString()
+      .split(" ")[1]
+      .concat(newDate.toDateString().split(" ")[2]);
+
+
     return (
       <div className="answer" key={answer.id}>
         <h5>
           <i className="fas fa-user-tie" id="astro"></i>
 
-          {answer.User?.username}
+          {" "+answer.User?.username}
         </h5>
+        <p className="dateAnswer">{finalDate ? "~"+finalDate : "now"}</p>
         <p>{answer.answerText}</p>
         <div
           className="questionImg"
@@ -32,11 +45,10 @@ const AnswerArea = ({ answer }) => {
         >
           {/* <img src={answer.answerImg} alt="" /> */}
         </div>
-        <p>{answer.votes}</p>
         <div className="bottomAnswerButtons">
           <div className="bottomAnswerButtonsLeft">
             <button className="questionButtons">
-              <i className="fas fa-arrow-up"></i>
+              <i className="fas fa-arrow-up">{" "+answer.votes}</i>
             </button>
             <button className="questionButtons">
               <i className="fas fa-arrow-down"></i>

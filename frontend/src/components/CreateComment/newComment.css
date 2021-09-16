@@ -4,6 +4,10 @@
    background-color: #e6e6e6;
 }
 
+.commentProfileHead i{
+  font-size: 25px;
+}
+
 
 .createNewComment{
     display: flex;

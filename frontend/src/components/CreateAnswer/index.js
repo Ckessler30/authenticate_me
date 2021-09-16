@@ -56,9 +56,9 @@ const CreateAnswerForm = ({ hideForm }) => {
           />
           
           <div className="answerButtons">
-              <button type="submit">Submit</button>
-              <button type="button">Save Draft</button>
-              <button type="button" onClick={handleCancelClick}>
+              <button type="submit" className="addAnswerButtons">Submit</button>
+              <button type="button" className="addAnswerButton1">Save Draft</button>
+              <button type="button" onClick={handleCancelClick} className="addAnswerButton1">
                 Cancel
               </button>
           </div>

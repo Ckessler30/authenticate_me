@@ -22,11 +22,11 @@
 
 .newCommentButtons {
   align-items: center;
-  background-color: #0A66C2;
+  background-color: #e6e6e6;
   border: 0;
   border-radius: 100px;
   box-sizing: border-box;
-  color: #ffffff;
+  color: #686767;
   cursor: pointer;
   display: inline-flex;
   font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
@@ -51,7 +51,7 @@
 
 .newCommentButtons:hover,
 .newCommentButtons:focus { 
-  background-color: #16437E;
+  background-color: #b1b0b0;
   color: #ffffff;
 }
 
@@ -59,3 +59,5 @@
   background: #09223b;
   color: rgb(255, 255, 255, .7);
 }
+
+

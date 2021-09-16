@@ -1,12 +1,32 @@
 .profile-dropdown{
     /* border: 5px solid red; */
     list-style: none;
+     position: fixed;
+    /* top: 0;
+    left: 0; */
+    margin-top: 2.5rem;
+    margin-left: -3.5rem;
+    width: 10rem;
+    padding: 2rem;
+    height: 11rem;
+    background-color: rgba(255, 255, 255, 0.89);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    gap: .25rem;
+    font-size: 15px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  
 }
 
 .profileMenu{
     display: flex;
-
+    flex-direction: column;
+    gap: 1rem;
     font-size: 10px;
+    width: 3rem;
 }
 
 
