@@ -9,6 +9,7 @@
 
 .comment{
     font-size: 1.1rem;
+    border-top: 2px solid lightgrey;
 }
 
 .comment p{
