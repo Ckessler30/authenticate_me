@@ -1,0 +1,205 @@
+.editQuestionForm{
+      position: fixed;
+     top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, .2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.editQuestionFormInner{
+     position: relative;
+    /* padding: 32px; */
+    width: 45rem;
+    height: 25rem;
+    max-width: 640px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    align-items: stretch;
+    
+}
+
+
+.editQuestionButtons{
+    display: flex;
+    align-self: flex-end;
+    border-top: 2px solid #e6e6e6;
+    width: 100%;
+    justify-content: flex-end;
+    margin-bottom: 1rem;
+}
+.editQuestionButtons>button{
+    margin-top: .4rem;
+    margin-right: 1rem;
+}
+
+
+.editQuestionInputs{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+}
+
+
+
+.editQuestionTop{
+    margin: 1.5rem;
+}
+.editQuestionTop>input{
+    width: 100%;
+    height: 3rem;
+    font-size: 1rem;
+    padding-left: .25rem;
+    border-top-style: hidden;   
+    border-right-style: hidden;    
+    border-left-style: hidden;  
+    border-bottom-style: groove;
+    border: 2px solid #e6e6e6;
+ 
+}
+
+.update-buttons {
+  align-items: center;
+  background-color: #0a66c2c5;
+  border: 0;
+  border-radius: 100px;
+  box-sizing: border-box;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 20px;
+  max-width: 480px;
+  min-height: 40px;
+  min-width: 0px;
+  overflow: hidden;
+  padding: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  text-align: center;
+  touch-action: manipulation;
+  transition: background-color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, box-shadow 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+  user-select: none;
+  -webkit-user-select: none;
+  vertical-align: middle;
+}
+
+.update-buttons:hover,
+.update-buttons:focus { 
+  background-color: #16437E;
+  color: #ffffff;
+}
+
+.update-buttons:active {
+  background: #09223b;
+  color: rgb(255, 255, 255, .7);
+}
+
+.update-buttons:disabled { 
+  cursor: not-allowed;
+  background: rgba(0, 0, 0, .08);
+  color: rgba(0, 0, 0, .3);
+}
+.update-buttons2 {
+  align-items: center;
+  background-color: #0a66c200;
+  border: 0;
+  border-radius: 100px;
+  box-sizing: border-box;
+  color: #b4b3b3;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 20px;
+  max-width: 480px;
+  min-height: 40px;
+  min-width: 0px;
+  overflow: hidden;
+  padding: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  text-align: center;
+  touch-action: manipulation;
+  transition: background-color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, box-shadow 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+  user-select: none;
+  -webkit-user-select: none;
+  vertical-align: middle;
+}
+
+.update-buttons2:hover,
+.update-buttons2:focus { 
+  background-color: #e7e7e7dc;
+  /* color: #ffffff; */
+}
+
+.update-buttons2:active {
+  background: #09223b;
+  color: rgb(255, 255, 255, .7);
+}
+
+.update-buttons2:disabled { 
+  cursor: not-allowed;
+  background: rgba(0, 0, 0, .08);
+  color: rgba(0, 0, 0, .3);
+}
+.xButton {
+  align-items: center;
+  background-color: #0a66c200;
+  border: 0;
+  border-radius: 100px;
+  box-sizing: border-box;
+  color: #b4b3b3;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 20px;
+  max-width: 480px;
+  min-height: 40px;
+  min-width: 0px;
+  overflow: hidden;
+  padding: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  text-align: center;
+  touch-action: manipulation;
+  transition: background-color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, box-shadow 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+  user-select: none;
+  -webkit-user-select: none;
+  vertical-align: middle;
+  margin-left: -1rem;
+}
+
+.xButton:hover,
+.xButton:focus { 
+  background-color: #e7e7e7dc;
+  /* color: #ffffff; */
+}
+
+.xButton:active {
+  background: #09223b;
+  color: rgb(255, 255, 255, .7);
+}
+
+.xButton:disabled { 
+  cursor: not-allowed;
+  background: rgba(0, 0, 0, .08);
+  color: rgba(0, 0, 0, .3);
+}
+
+
+

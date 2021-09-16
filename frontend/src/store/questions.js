@@ -2,6 +2,7 @@ import { csrfFetch } from "./csrf";
 
 const LOAD = "questions/LOAD";
 const ADD = "questions/ADD";
+const REMOVE = "questions/REMOVE";
 
 const load = (list) => ({
   type: LOAD,
@@ -12,6 +13,45 @@ const createQuestion = (question) => ({
   type: ADD,
   question,
 });
+
+const remove = (questionId) => ({
+  type: REMOVE,
+  questionId,
+});
+
+export const editQuestion = (questionDetails) => async dispatch => {
+  const { title, questionText, questionId } = questionDetails
+  const response = await csrfFetch(`/api/questions/${questionId}`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json"},
+    body: JSON.stringify({
+      title,
+      questionText,
+      questionId
+    })
+  })
+  if(response.ok){
+    const updatedQuestion = await response.json()
+    dispatch(createQuestion(updatedQuestion))
+    return updatedQuestion
+  }
+}
+
+export const removeQuestion = (questionId) => async dispatch => {
+  const response = await csrfFetch(`/api/questions/${questionId}`, {
+    method: "DELETE",
+    headers: { 'Content-Type': 'application/json'},
+    body: JSON.stringify({
+      questionId
+    })
+  })
+
+  if(response.ok){
+    const removedQuestionId = await response.json()
+    dispatch(remove(removedQuestionId))
+    return removedQuestionId
+  }
+}
 
 export const getQuestions = () => async (dispatch) => {
   const response = await fetch(`/api/`);
@@ -62,7 +102,23 @@ const questionReducer = (state = initalState, action) => {
       };
     }
     case ADD: {
-            let newState = {...state, [action.question.id]: action.question}
+      if(!state[action.question.id]){
+        let newState = {...state, [action.question.id]: action.question}
+        newState.list.push(action.question)
+        return newState
+      }else{
+        let updatedState = { ...state }
+        updatedState[action.question.id] = action.question
+        const newQuestionList = [...updatedState.list]
+        const removeQuestion = newQuestionList.filter(question => question.id === action.question.id)[0]
+        newQuestionList.splice(newQuestionList.findIndex(question => question.id === removeQuestion.id), 1, action.question)
+        // console.log(removeQuestion)
+        // console.log(newQuestionList)
+        // console.log(updatedState)
+        updatedState.list = newQuestionList
+        return updatedState
+      }
+      
             // newState.list = newStateList
             //  console.log("HERERERER", newState)
             
@@ -74,10 +130,17 @@ const questionReducer = (state = initalState, action) => {
             // }
             // // questionList.push(action.question)
             // newState.list = questionList
-            newState.list.push(action.question)
             // console.log("MAYBE????", newState)
-            return newState
         
+    }
+    case REMOVE: {
+      const deleteState = {  ...state }
+      const newQuestionsList = [...deleteState.list]
+      const removeQuestion = newQuestionsList.filter(question => question.id === action.questionId)
+      removeQuestion.forEach(question => newQuestionsList.splice(newQuestionsList.findIndex(question2 => question2.id === question.id), 1))
+      delete deleteState[action.questionId]
+      deleteState.list = newQuestionsList
+      return deleteState
     }
     default:
       return state;

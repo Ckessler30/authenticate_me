@@ -19,6 +19,23 @@ const remove = (commentId) => ({
     commentId
 })
 
+export const editComment = (commentDetails) => async dispatch => {
+    const { commentId, commentText } = commentDetails
+    const response = await csrfFetch(`/api/comments/${commentId}`, {
+        method: "PUT",
+        headers: {"Content-Type": "application/json"},
+        body:JSON.stringify({
+            commentText,
+            commentId
+        })
+    })
+    if(response.ok){
+        const updatedComment = await response.json()
+        dispatch(createComment(updatedComment))
+        return updatedComment
+    }
+}
+
 export const removeComment = (commentId) => async dispatch => {
     
     const response = await csrfFetch(`/api/comments/${commentId}`, {
@@ -30,14 +47,16 @@ export const removeComment = (commentId) => async dispatch => {
     })
 
     if(response.ok){
-        const commentId2 = response.json()
+        const commentId2 = await response.json()
         dispatch(remove(commentId2))
         // console.log(data)
+        return commentId2
     }
 }
 
-export const getComments = () => async dispatch => {
-    const response = await fetch('/api/comments/')
+export const getComments = (answerId) => async dispatch => {
+    // console.log("JJJJJJJ",answerId)
+    const response = await fetch(`/api/comments/${answerId}`)
     if(response.ok){
         const list = await response.json()
         dispatch(load(list))
@@ -70,7 +89,7 @@ const commentReducer = (state=initialState, action) => {
             action.commentsList.forEach(comment => {
                 allComments[comment.id] = comment
             })
-
+                // console.log("LOOK HERE", action.commentsList)
             return {
                 ...allComments,
                 ...state,
@@ -78,9 +97,31 @@ const commentReducer = (state=initialState, action) => {
             }
         }
         case REMOVE: {
-            const newState = {}
+            const newState = {...state}
+            // console.log("HEREE",newState.commentsList)
+            const newCommentsList = [...newState.commentsList]
+            const removeComment = newCommentsList.filter(comment =>  comment.id === action.commentId)
+            removeComment.forEach(comment => newCommentsList.splice(newCommentsList.findIndex(comment2 => comment2.id === comment.id), 1))
+            // console.log("HERE2", newCommentsList)
             delete newState[action.commentId]
+            newState.commentsList = newCommentsList
             return newState
+        }
+        case ADD: {
+            if(!state[action.comment.id]){
+                const newestState = { ...state, [action.comment.id]: action.comment}
+                newestState.commentsList.push(action.comment)
+                return newestState
+            }else{
+                let updatedState = { ...state }
+                updatedState[action.comment.id] = action.comment
+                const newCommentsList = [...updatedState.commentsList]
+                const removeComment = newCommentsList.filter(comment => comment.id === action.comment.id)[0]
+                newCommentsList.splice(newCommentsList.findIndex(comment => comment.id === removeComment.id), 1, action.comment)
+                updatedState.commentsList = newCommentsList
+                return updatedState
+                
+            }
         }
         default:
             return state

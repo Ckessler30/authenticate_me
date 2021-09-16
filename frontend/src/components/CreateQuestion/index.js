@@ -28,7 +28,7 @@ const CreateQuestionForm = ({ hideForm }) => {
         const createdQuestion = await dispatch(createNewQuestion(questionDetails))
         if(createdQuestion){
             //need to update this before final
-            // history.push('/')
+            history.push('/')
             hideForm()
         }
     }

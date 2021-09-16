@@ -3,7 +3,7 @@ const router = express.Router();
 const asyncHandler = require("express-async-handler");
 const { check, validationResult } = require("express-validator");
 
-const { User, Question, Answer } = require("../../db/models");
+const { User, Question, Answer, Comment } = require("../../db/models");
 const { requireAuth } = require("../../utils/auth");
 
 const answerValidations = require('../../validations/answers')
@@ -11,7 +11,7 @@ const answerValidations = require('../../validations/answers')
 
 router.get('/', asyncHandler(async(req, res) => {
     const { questionId} = req.body
-    console.log('QUESTION ID',questionId)
+    // console.log('QUESTION ID',questionId)
     const answers = await Answer.findAll({
         include: User, Question
     })
@@ -36,6 +36,49 @@ router.post(
        return res.json(answer);
   })
 );
+
+
+router.delete("/:id(\\d+)", requireAuth, asyncHandler(async(req, res) => {
+  const { answerId } = req.body
+  const answer = await Answer.findOne({
+    where:{
+      id: answerId
+    }
+  })
+
+
+  if(answer){
+    const comments = await Comment.findAll({
+      where:{
+        answerId: answer.id
+      }
+    })
+    if(comments){
+      comments.forEach(async(comment) => {
+        await comment.destroy()
+      })
+    }
+
+    await answer.destroy()
+  }
+
+  return res.json(answerId)
+}))
+
+
+router.put("/:id(\\d+)", requireAuth, asyncHandler(async(req,res) => {
+  const { answerId, answerText, answerImg} = req.body
+  const answer = await Answer.findOne({
+    where: {
+      id: answerId
+    }
+  })
+  const updatedAnswer = await answer.update({
+    answerText,
+    answerImg
+  })
+  return res.json(updatedAnswer)
+}));
 
 
 module.exports = router;

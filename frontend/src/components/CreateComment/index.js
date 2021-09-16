@@ -1,31 +1,31 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { createNewComment, getComments } from "../../store/comments";
 
-import { removeComment } from "../../store/comments";
+
+import AnswerComments from "../AnswerComments";
 
 import "./newComment.css";
 
 const CreateCommentForm = ({answerId, hideForm }) => {
   const dispatch = useDispatch();
+  const history = useHistory()
   const sessionUser = useSelector((state) => state.session.user);
   const {questionId} = useParams();
   const [commentText, setCommentText] = useState("");
-  const comments = useSelector(state => state.comments.commentsList)
-  let realComments;
+  const [showComments, setShowComments] = useState(false);
+  // const comments = useSelector(state => state.comments.commentsList)
+  // console.log(answerId)
+  
 
   // console.log(comments)
   //   console.log(data)
-  useEffect(() => {
-    dispatch(getComments())
-  },[dispatch])
+  // useEffect(() => {
+  //   dispatch(getComments(answerId))
+  // },[dispatch])
   
-  if(comments){
-
-    realComments = comments.filter(comment => comment.answerId === +answerId)
-    // console.log(realComments)
-  }
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -40,6 +40,8 @@ const CreateCommentForm = ({answerId, hideForm }) => {
 
     if(createdComment){
       setCommentText("")
+      // history.push(`/questions/${questionId}`)
+      // console.log(history)
     }
     
   };
@@ -47,13 +49,13 @@ const CreateCommentForm = ({answerId, hideForm }) => {
     e.preventDefault();
     hideForm();
   };
-   const deleteComment = async (e) => {
-     e.preventDefault();
-     const deletedComment = await dispatch(removeComment());
-   };
 
-  return hideForm ? (
+
+  return (
     <div className="commentsSection">
+      <button onClick={() => setShowComments(!showComments)}>Comments</button>
+      {showComments && 
+      <div> 
       <div className="createNewComment">
         <div className="createNewCommentInner">
           <form onSubmit={handleSubmit} className="createCommentInputs">
@@ -72,45 +74,44 @@ const CreateCommentForm = ({answerId, hideForm }) => {
           </form>
         </div>
       </div>
-      <div className="commentsList">
-        {realComments &&
-          realComments.map((comment) => (
-            <div className="comment" key={comment.id}>
-              <h4>
-                <i className="fas fa-user-circle"></i>
-
-                {comment.User.username}
-              </h4>
-              <p>{comment.commentText}</p>
-              <div className="bottomCommentButtons">
-                <div className="bottomCommentLeft">
-                  <button>
-                    <i className="fas fa-arrow-alt-circle-up"></i>
-                    UpVote
-                  </button>
-                  <button>
-                    <i className="fas fa-reply"></i> Reply
-                  </button>
-                </div>
-                <div className="bottomCommentRight">
-                  <button>
-                    <i className="fas fa-arrow-down"></i>
-                  </button>
-                  <button>
-                    <i className="fas fa-ellipsis-h"></i>
-                  </button>
-                  {sessionUser.id === comment.userId ? <button onClick={async(e) => {
-                      e.preventDefault()
-                      const deletedComment= await dispatch(removeComment(comment.id))
-                  }}></button> : ''}
-                </div>
-              </div>
-            </div>
-          ))}
+      <AnswerComments hideForm={hideForm} answerId={answerId} commentText={commentText} />
       </div>
-    </div>
-  ) : (
-    ""
+      }
+      {/* {comments &&
+          comments.map((comment) => <AnswerComments comment={comment} hideForm={hideForm} answerId={answerId}/>)} */}
+      {/* // <div className="comment" key={comment.id}>
+            //   <h4>
+            //     <i className="fas fa-user-circle"></i>
+            
+            //     {comment.User.username}
+            //   </h4>
+            //   <p>{comment.commentText}</p>
+            //   <div className="bottomCommentButtons">
+            //     <div className="bottomCommentLeft">
+            //       <button>
+            //         <i className="fas fa-arrow-alt-circle-up"></i>
+            //         UpVote
+            //       </button>
+            //       <button>
+            //         <i className="fas fa-reply"></i> Reply
+            //       </button>
+            //     </div>
+            //     <div className="bottomCommentRight">
+            //       <button>
+            //         <i className="fas fa-arrow-down"></i>
+            //       </button>
+            //       <button>
+            //         <i className="fas fa-ellipsis-h"></i>
+            //       </button>
+            //       {sessionUser?.id === comment.userId ? <button onClick={async(e) => {
+              e.preventDefault()
+              const deletedComment= await dispatch(removeComment(comment.id))
+              return hideForm()
+            }}></button> : ''}
+            </div>
+            </div>
+          </div> */}
+          </div>
   );
 };
 

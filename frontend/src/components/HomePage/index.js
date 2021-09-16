@@ -6,6 +6,8 @@ import './HomePage.css'
 
 
 import CreateQuestionForm from "../CreateQuestion";
+import DeleteForm from "../DeletePopup";
+import EditQuestionForm from "../EditQuestionForm";
 
 function HomePage () {
     const dispatch = useDispatch()
@@ -18,6 +20,7 @@ function HomePage () {
     // console.log("USER", sessionUser)
 
     const [showForm, setShowForm] = useState(false)
+   
 
 
     // console.log("TARGET", questions[0].User)
@@ -97,6 +100,13 @@ function HomePage () {
                       <button>
                         <i className="fas fa-share"></i>
                       </button>
+                      
+                      {sessionUser?.id === +question.userId && (
+                        <DeleteForm questionId={question.id} deleteType={"question"} />
+                      )}
+                      {sessionUser?.id === +question.userId && (
+                        <EditQuestionForm question={question}/>
+                      )}
                     </div>
                   </div>
                 </div>

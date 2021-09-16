@@ -9,12 +9,16 @@ const { requireAuth } = require("../../utils/auth");
 const commentValidators = require('../../validations/comments')
 
 router.get(
-  "/",
+  "/:id(\\d+)",
   asyncHandler(async (req, res) => {
+    const answerId = req.url.split('/')[1]
     const comments = await Comment.findAll({
-        include: User
-    })
-    return res.json(comments)
+      where:{
+        answerId
+      },
+      include: User,
+    });
+    return res.json(comments);
   })
 );
 
@@ -48,6 +52,21 @@ router.delete("/:id(\\d+)", requireAuth, asyncHandler(async(req, res) => {
    await comment.destroy()
   }
   return res.json(commentId)
+}));
+
+router.put("/:id(\\d+)", requireAuth, asyncHandler(async(req,res) => {
+  const { commentText, commentId} = req.body
+  const comment = await Comment.findOne({
+    where:{
+      id: commentId
+    }
+  })
+
+  const updatedComment = await comment.update({
+    commentText
+  })
+  return res.json(updatedComment)
+
 }));
 
 module.exports = router;
