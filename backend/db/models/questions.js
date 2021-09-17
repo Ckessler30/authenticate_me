@@ -14,11 +14,6 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false
     },
     questionImg: DataTypes.TEXT,
-    votes: {
-      type: DataTypes.INTEGER,
-      defaultValue: 0,
-      allowNull: false
-    }
 
   }, {});
   Question.associate = function(models) {
