@@ -98,7 +98,7 @@ function HomePage () {
                   <div className="questionProfile">
                     <i className="far fa-user-circle"></i>
 
-                    {" " + sessionUser.username}
+                    {" " + sessionUser?.username}
                   </div>
                   <h3>What is your question or link</h3>
                 </button>

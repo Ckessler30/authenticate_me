@@ -11,7 +11,7 @@ const CreateQuestionForm = ({ hideForm }) => {
     const sessionUser = useSelector(state => state.session.user)
     const [title, setTitle] = useState('')
     const [questionText, setQuestionText] = useState('')
-    const [questionImg, setQuestionImg] = useState("https://cdn.vox-cdn.com/thumbor/HWPOwK-35K4Zkh3_t5Djz8od-jE=/0x86:1192x710/fit-in/1200x630/cdn.vox-cdn.com/uploads/chorus_asset/file/22312759/rickroll_4k.jpg");
+    const [questionImg, setQuestionImg] = useState("");
     const [errors, setErrors] = useState([]);
     // console.log(sessionUser)
 
@@ -23,6 +23,12 @@ const CreateQuestionForm = ({ hideForm }) => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         setErrors([])
+        if(questionImg === ""){
+          console.log('hit here')
+          setQuestionImg(
+            "https://cdn.vox-cdn.com/thumbor/HWPOwK-35K4Zkh3_t5Djz8od-jE=/0x86:1192x710/fit-in/1200x630/cdn.vox-cdn.com/uploads/chorus_asset/file/22312759/rickroll_4k.jpg"
+          );
+        }
         const questionDetails = {
             userId: sessionUser.id,
             title,
@@ -54,7 +60,7 @@ const CreateQuestionForm = ({ hideForm }) => {
                 <div className="createQuestionProfileHead">
                   <i className="far fa-smile"></i>
 
-                  <p>{sessionUser.username} asked</p>
+                  <p>{sessionUser?.username} asked</p>
                   <button type="button" className="publicButton">
                     <i className="fas fa-user-friends"></i>
                     Public
@@ -83,8 +89,7 @@ const CreateQuestionForm = ({ hideForm }) => {
                 />
                 <input
                   type="text"
-                  placeholder="Wanna put an image in?"
-                  required
+                  placeholder="Attach an image? (paste image url here)"
                   value={questionImg}
                   onChange={(e) => setQuestionImg(e.target.value)}
                 />
