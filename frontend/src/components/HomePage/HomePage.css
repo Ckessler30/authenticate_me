@@ -33,9 +33,9 @@ html{
     /* background-color: grey; */
     grid-column-start: 1 ;
     grid-column-end: 3;
-
+    
     max-width: 11rem;
-    border: 2px solid black;
+    /* border: 2px solid black; */
     
 }
 
@@ -60,8 +60,8 @@ a{
     height: 100%;
     grid-column-start: 3;
     grid-column-end: 11;
-    margin-left: 1rem;
-    margin-right: 1rem;
+    margin-left: 2rem;
+    margin-right:1rem;
     /* padding: 2rem; */
     max-width: 40rem;
 
@@ -283,4 +283,46 @@ a{
   cursor: not-allowed;
   background: rgba(0, 0, 0, .08);
   color: rgba(0, 0, 0, .3);
+}
+
+.spaces{
+    display: flex;
+    flex-direction: column;
+    gap: .25rem;
+   
+}
+
+.spacesLogos{
+    
+    padding: 1rem;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+
+}
+.spaceButtons{
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    gap: .25rem;
+    min-height: 3rem;
+    background-color: rgb(243, 243, 243);
+    border: none;
+    border-radius: 10px;
+}
+
+.spaceButtons:hover{
+    background-color: rgb(212, 212, 212);
+}
+
+
+.createSpaceButton{
+    min-height: 2.4rem;
+     background-color: rgb(212, 212, 212);
+     border: none;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .3rem;
 }
