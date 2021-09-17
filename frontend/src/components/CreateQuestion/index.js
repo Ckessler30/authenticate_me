@@ -51,6 +51,15 @@ const CreateQuestionForm = ({ hideForm }) => {
           <div className="createNewQuestion">
             <div className="createNewQuestionInner">
               <form onSubmit={handleSubmit} className="createQuestionInputs">
+                <div className="createQuestionProfileHead">
+                  <i className="far fa-smile"></i>
+
+                  <p>{sessionUser.username} asked</p>
+                  <button type="button" className="publicButton">
+                    <i className="fas fa-user-friends"></i>
+                    Public
+                  </button>
+                </div>
                 {errors.length > 0 && (
                   <ul className="commentErrors">
                     {errors.map((error, idx) => (
@@ -60,14 +69,14 @@ const CreateQuestionForm = ({ hideForm }) => {
                 )}
                 <input
                   type="text"
-                  placeholder="Question Title"
+                  placeholder='Start your question with "What", "How", "Why", etc.'
                   required
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
                 />
                 <input
                   type="text"
-                  placeholder="Question?"
+                  placeholder="Question info?"
                   required
                   value={questionText}
                   onChange={(e) => setQuestionText(e.target.value)}
@@ -79,10 +88,18 @@ const CreateQuestionForm = ({ hideForm }) => {
                   value={questionImg}
                   onChange={(e) => setQuestionImg(e.target.value)}
                 />
-                <button type="submit">Post your question</button>
-                <button type="button" onClick={handleCancelClick}>
-                  Cancel
-                </button>
+                <div className="createQuestionButtons">
+                  <button
+                    className="cancelQuestionButton"
+                    type="button"
+                    onClick={handleCancelClick}
+                  >
+                    Cancel
+                  </button>
+                  <button className="submitQuestionButton" type="submit">
+                    Add question
+                  </button>
+                </div>
               </form>
             </div>
           </div>
