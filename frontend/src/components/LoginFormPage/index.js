@@ -28,6 +28,13 @@ function LoginFormPage() {
       });
   }
 
+  const handleDemoUser = () => {
+    return dispatch(sessionActions.login({
+      credential: "Demo-lition",
+      password: "password"
+    }))
+  }
+
   return (
     <div className="loginBox">
       <div className="loginBoxHead">
@@ -70,9 +77,12 @@ function LoginFormPage() {
                   required
                 />
               </div>
-              <button className="submitButton" type="submit">
-                Log In
-              </button>
+              <div className="loginDemoButtons">
+                <button onClick={handleDemoUser} className="demoButton">Demo</button>
+                <button className="submitButton" type="submit">
+                  Log In
+                </button>
+              </div>
             </div>
           </form>
         </div>
