@@ -137,9 +137,9 @@ export default function FilteredQuestions() {
                     <button className="questionButtons">
                       <i className="fas fa-sync-alt"></i>
                     </button>
-                    <button className="questionButtons">
+                    {/* <button className="questionButtons">
                       <i class="fas fa-comment"></i>
-                    </button>
+                    </button> */}
                   </div>
                   <div className="questionFootButtonsRight">
                     <button className="questionButtons">
