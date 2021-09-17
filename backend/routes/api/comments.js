@@ -5,8 +5,15 @@ const { check, validationResult } = require("express-validator");
 
 const { User, Question, Answer, Comment } = require("../../db/models");
 const { requireAuth } = require("../../utils/auth");
+const { handleValidationErrors } = require("../../utils/validation");
 
-const commentValidators = require('../../validations/comments')
+
+const commentValidators = [
+    check("commentText")
+      .notEmpty()
+      .withMessage("Please enter a comment below"),
+    handleValidationErrors
+  ]
 
 router.get(
   "/:id(\\d+)",
@@ -23,7 +30,7 @@ router.get(
 );
 
 router.post(
-  "/new", commentValidators.validateCreate,
+  "/new", commentValidators,
   requireAuth,
   asyncHandler(async (req, res) => {
       const { userId, answerId, commentText} = req.body
@@ -54,7 +61,7 @@ router.delete("/:id(\\d+)", requireAuth, asyncHandler(async(req, res) => {
   return res.json(commentId)
 }));
 
-router.put("/:id(\\d+)", requireAuth, asyncHandler(async(req,res) => {
+router.put("/:id(\\d+)", commentValidators ,requireAuth, asyncHandler(async(req,res) => {
   const { commentText, commentId} = req.body
   const comment = await Comment.findOne({
     where:{

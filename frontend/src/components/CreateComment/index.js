@@ -15,6 +15,7 @@ const CreateCommentForm = ({answerId, hideForm }) => {
   const {questionId} = useParams();
   const [commentText, setCommentText] = useState("");
   const [showComments, setShowComments] = useState(false);
+   const [errors, setErrors] = useState([]);
   // const comments = useSelector(state => state.comments.commentsList)
   // console.log(answerId)
   const comments = useSelector((state) => state.comments.commentsList);
@@ -27,24 +28,32 @@ const CreateCommentForm = ({answerId, hideForm }) => {
   // },[dispatch])
   
   // console.log(comments)
+   const handleErrors = async (res) => {
+     const data = await res.json();
+     if (data && data.errors) setErrors(data.errors);
+   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    setErrors([])
     const commentDetails = {
       userId: sessionUser.id,
       answerId,
       commentText,
     };
+    try{
 
-    const createdComment = await dispatch(createNewComment(commentDetails));
-
-    if(createdComment){
-      setCommentText("")
-      // history.push(`/questions/${questionId}`)
-      // console.log(history)
+      const createdComment = await dispatch(createNewComment(commentDetails));
+  
+      if(createdComment){
+        setCommentText("")
+        // history.push(`/questions/${questionId}`)
+        // console.log(history)
+      }
+      
+    }catch(res){
+      handleErrors(res)
     }
-    
   };
   const handleCancelClick = (e) => {
     e.preventDefault();
@@ -63,24 +72,33 @@ const CreateCommentForm = ({answerId, hideForm }) => {
       {showComments && (
         <div>
           {sessionUser && (
-            <div className="createNewComment">
-              <div className="createNewCommentInner">
-                <form onSubmit={handleSubmit} className="createCommentInputs">
-                  <div className="commentProfileHead">
-                    <i className="fas fa-user-secret"></i>
-                  </div>
-                  <textarea
-                    placeholder="Write your answer"
-                    required
-                    value={commentText}
-                    onChange={(e) => setCommentText(e.target.value)}
-                  />
-                  <div className="commentButtons">
-                    <button type="submit" className="addCommentButton">
-                      Add Comment
-                    </button>
-                  </div>
-                </form>
+            <div className="commentAndErrorBox">
+              {errors.length > 0 && (
+                <ul className="commentErrors">
+                  {errors.map((error, idx) => (
+                    <li key={idx}>{error}</li>
+                  ))}
+                </ul>
+              )}
+              <div className="createNewComment">
+                <div className="createNewCommentInner">
+                  <form onSubmit={handleSubmit} className="createCommentInputs">
+                    <div className="commentProfileHead">
+                      <i className="fas fa-user-secret"></i>
+                    </div>
+                    <textarea
+                      placeholder="Add a comment..."
+                      required
+                      value={commentText}
+                      onChange={(e) => setCommentText(e.target.value)}
+                    />
+                    <div className="commentButtons">
+                      <button type="submit" className="addCommentButton">
+                        Add Comment
+                      </button>
+                    </div>
+                  </form>
+                </div>
               </div>
             </div>
           )}

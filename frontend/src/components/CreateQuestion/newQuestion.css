@@ -30,10 +30,166 @@
     gap: 2rem;
     justify-content: center;
     align-items: center;
+    width: 100%;
+}
+
+.createQuestionProfileHead{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: .25rem;
+    width: 100%;
+    margin-bottom: -2rem;
+   
+}
+
+.createQuestionProfileHead>p{
+    font-size: 1rem;
+    color: #9c9c9c;
+}
+.createQuestionProfileHead>i{
+    font-size: 1.5rem;
 }
 
 .createQuestionInputs>input{
-    height: 2.5rem;
-    width: 25rem;
+    height: 3rem;
+    width: 33rem;
+    font-size: 1rem;
+    border: none;
+    border-bottom: 1px solid #e6e6e6;
 }
 
+.submitQuestionButton {
+  align-items: center;
+  background-color: #0A66C2;
+  border: 0;
+  border-radius: 100px;
+  box-sizing: border-box;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 20px;
+  max-width: 9rem;
+  min-height: 40px;
+  min-width: 0px;
+  overflow: hidden;
+  padding: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  text-align: center;
+  touch-action: manipulation;
+  transition: background-color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, box-shadow 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+  user-select: none;
+  -webkit-user-select: none;
+  vertical-align: middle;
+}
+
+.submitQuestionButton:hover,
+.submitQuestionButton:focus { 
+  background-color: #16437E;
+  color: #ffffff;
+}
+
+.submitQuestionButton:active {
+  background: #09223b;
+  color: rgb(255, 255, 255, .7);
+}
+
+.submitQuestionButton:disabled { 
+  cursor: not-allowed;
+  background: rgba(0, 0, 0, .08);
+  color: rgba(0, 0, 0, .3);
+}
+.cancelQuestionButton {
+  align-items: center;
+  background-color: white;
+  border: 0;
+  border-radius: 100px;
+  box-sizing: border-box;
+  color: #a8a8a8;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 20px;
+  max-width: 9rem;
+  min-height: 40px;
+  min-width: 0px;
+  overflow: hidden;
+  padding: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  text-align: center;
+  touch-action: manipulation;
+  transition: background-color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, box-shadow 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+  user-select: none;
+  -webkit-user-select: none;
+  vertical-align: middle;
+}
+
+.cancelQuestionButton:hover,
+.cancelQuestionButton:focus { 
+  background-color: #e6e6e6;
+  /* color: #ffffff; */
+}
+
+.cancelQuestionButton:active {
+  background: #09223b;
+  color: rgb(255, 255, 255, .7);
+}
+
+.cancelQuestionButton:disabled { 
+  cursor: not-allowed;
+  background: rgba(0, 0, 0, .08);
+  color: rgba(0, 0, 0, .3);
+}
+
+.createQuestionButtons{
+    display: flex;
+    border-top: 2px solid #e6e6e6;
+    padding-top: .5rem;
+    width: 100%;
+align-content: flex-end;
+    justify-content: flex-end;
+}
+
+
+.publicButton {
+  align-items: center;
+  background-color: #e6e6e6;
+  border: 0;
+  border-radius: 100px;
+  box-sizing: border-box;
+  color: #a8a8a8;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 20px;
+  max-width: 9rem;
+  min-height: 30px;
+
+  min-width: 0px;
+  overflow: hidden;
+  padding: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  text-align: center;
+  touch-action: manipulation;
+  transition: background-color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, box-shadow 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+  user-select: none;
+  -webkit-user-select: none;
+  vertical-align: middle;
+}
+
+.publicButton:hover{
+    cursor: not-allowed;
+}

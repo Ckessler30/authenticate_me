@@ -47,28 +47,30 @@ const AnswerComments = ({ hideForm, answerId }) => {
 
                   {comment.User?.username}
                 </h4>
-                <p>{comment.commentText}</p>
-                <EditCommentForm comment={comment}/>
-                <div className="bottomCommentButtons">
-                  <div className="bottomCommentLeft">
-                    <button className="newCommentButtons">
-                      <i className="fas fa-arrow-alt-circle-up"></i>
-                      UpVote
-                    </button>
-                    <button className="newCommentButtons">
-                      <i className="fas fa-reply"></i> Reply
-                    </button>
-                  </div>
-                  <div className="bottomCommentRight">
-                    <button className="newCommentButtons">
-                      <i className="fas fa-arrow-down"></i>
-                    </button>
-                    <button className="newCommentButtons">
-                      <i className="fas fa-ellipsis-h"></i>
-                    </button>
-                    {sessionUser?.id === comment.userId && (
-                      <DeleteForm commentId={comment.id} deleteType="comment" />
-                    )}
+                <div className="bottomHalfComments">
+                  <p>{comment.commentText}</p>
+                  <EditCommentForm comment={comment}/>
+                  <div className="bottomCommentButtons">
+                    <div className="bottomCommentLeft">
+                      <button className="newCommentButtons">
+                        <i className="fas fa-arrow-alt-circle-up"></i>
+                        UpVote
+                      </button>
+                      <button className="newCommentButtons">
+                        <i className="fas fa-reply"></i> Reply
+                      </button>
+                    </div>
+                    <div className="bottomCommentRight">
+                      <button className="newCommentButtons">
+                        <i className="fas fa-arrow-down"></i>
+                      </button>
+                      <button className="newCommentButtons">
+                        <i className="fas fa-ellipsis-h"></i>
+                      </button>
+                      {sessionUser?.id === comment.userId && (
+                        <DeleteForm commentId={comment.id} deleteType="comment" />
+                      )}
+                    </div>
                   </div>
                 </div>
               </div>
