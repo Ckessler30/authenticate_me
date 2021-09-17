@@ -318,11 +318,15 @@ a{
 
 .createSpaceButton{
     min-height: 2.4rem;
-     background-color: rgb(212, 212, 212);
+     background-color: rgb(235, 235, 235);
      border: none;
     border-radius: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: .3rem;
+}
+
+.createSpaceButton:hover{
+    background-color: rgb(212, 212, 212);
 }
