@@ -17,6 +17,7 @@ const CreateCommentForm = ({answerId, hideForm }) => {
   const [showComments, setShowComments] = useState(false);
   // const comments = useSelector(state => state.comments.commentsList)
   // console.log(answerId)
+  const comments = useSelector((state) => state.comments.commentsList);
   
 
   // console.log(comments)
@@ -25,7 +26,7 @@ const CreateCommentForm = ({answerId, hideForm }) => {
   //   dispatch(getComments(answerId))
   // },[dispatch])
   
-  
+  // console.log(comments)
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -53,31 +54,43 @@ const CreateCommentForm = ({answerId, hideForm }) => {
 
   return (
     <div className="commentsSection">
-      <button onClick={() => setShowComments(!showComments)}>Comments</button>
-      {showComments && 
-      <div> 
-      {sessionUser &&  
-      <div className="createNewComment">
-        <div className="createNewCommentInner">
-          <form onSubmit={handleSubmit} className="createCommentInputs">
-            <div className="commentProfileHead">
-              <i className="fas fa-user-secret"></i>
+      <button
+        onClick={() => setShowComments(!showComments)}
+        className="commentButton"
+      >
+        comments
+      </button>
+      {showComments && (
+        <div>
+          {sessionUser && (
+            <div className="createNewComment">
+              <div className="createNewCommentInner">
+                <form onSubmit={handleSubmit} className="createCommentInputs">
+                  <div className="commentProfileHead">
+                    <i className="fas fa-user-secret"></i>
+                  </div>
+                  <textarea
+                    placeholder="Write your answer"
+                    required
+                    value={commentText}
+                    onChange={(e) => setCommentText(e.target.value)}
+                  />
+                  <div className="commentButtons">
+                    <button type="submit" className="addCommentButton">
+                      Add Comment
+                    </button>
+                  </div>
+                </form>
+              </div>
             </div>
-            <textarea
-              placeholder="Write your answer"
-              required
-              value={commentText}
-              onChange={(e) => setCommentText(e.target.value)}
-            />
-            <div className="commentButtons">
-              <button type="submit">Add Comment</button>
-            </div>
-          </form>
+          )}
+          <AnswerComments
+            hideForm={hideForm}
+            answerId={answerId}
+            commentText={commentText}
+          />
         </div>
-      </div> }
-      <AnswerComments hideForm={hideForm} answerId={answerId} commentText={commentText} />
-      </div>
-      }
+      )}
       {/* {comments &&
           comments.map((comment) => <AnswerComments comment={comment} hideForm={hideForm} answerId={answerId}/>)} */}
       {/* // <div className="comment" key={comment.id}>
@@ -112,7 +125,7 @@ const CreateCommentForm = ({answerId, hideForm }) => {
             </div>
             </div>
           </div> */}
-          </div>
+    </div>
   );
 };
 

@@ -40,7 +40,7 @@ const DeleteForm = ({ questionId, deleteType, commentId, answerId }) => {
   };
   return (
     <div className="deleteFormBox">
-      <button onClick={() => setShowDelete(true)}>
+      <button onClick={() => setShowDelete(true)} className="questionButtons">
         <i className="fas fa-trash-alt"></i>
       </button>
       {showDelete && (

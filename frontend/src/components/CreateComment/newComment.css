@@ -4,12 +4,43 @@
    background-color: #e6e6e6;
 }
 
+.commentProfileHead i{
+  font-size: 25px;
+}
+
 
 .createNewComment{
     display: flex;
     /* border: 2px solid red; */
     padding: .5rem;
      border-bottom: 2px solid #e6e6e6;
+}
+.commentButton{
+       width: 18rem;
+    height: 4rem;
+    font-size: 20px;
+    background-color: white;
+      border-top-style: hidden;   
+    border-right-style: hidden;    
+    border-left-style: hidden;  
+    border-bottom-style: hidden;
+    border: 2px solid #e6e6e6;
+    border-radius: 10px;
+    color: grey;
+}
+.commentButton:hover{
+    background-color: #e6e6e6;
+}
+
+.createCommentInputs>textarea{
+    height: 4rem;
+font-size: 1rem;
+   border-top-style: hidden;   
+    border-right-style: hidden;    
+    border-left-style: hidden;  
+    border-bottom-style: groove;
+    border: 2px solid #e6e6e6;
+    resize: none;
 }
 
 .createNewCommentInner{
@@ -68,4 +99,46 @@
 .bottomCommentButtons{
     display: flex;
     justify-content: space-between;
+}
+
+.addCommentButton {
+
+  align-items: center;
+  background-color: #313131;
+  border: 0;
+  border-radius: 100px;
+  box-sizing: border-box;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-flex;
+  
+  font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 20px;
+  max-width: 480px;
+  min-height: 40px;
+  min-width: 0px;
+  overflow: hidden;
+  padding: 2px;
+  padding-left: 20px;
+  padding-right: 20px;
+  text-align: center;
+  touch-action: manipulation;
+  transition: background-color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, box-shadow 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+  user-select: none;
+  -webkit-user-select: none;
+  vertical-align: middle;
+}
+
+.addCommentButton:hover,
+.addCommentButton:focus { 
+  background-color: #16437E;
+  color: #ffffff;
+}
+
+.addCommentButton:active {
+  background: #09223b;
+  color: rgb(255, 255, 255, .7);
 }

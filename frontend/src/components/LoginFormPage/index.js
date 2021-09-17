@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import * as sessionActions from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect, NavLink } from 'react-router-dom';
+import { Redirect, NavLink, Route } from 'react-router-dom';
 import './LoginForm.css';
+
+import SignupFormPage from '../SignUpFormPage';
 
 function LoginFormPage() {
   const dispatch = useDispatch();
@@ -10,6 +12,7 @@ function LoginFormPage() {
   const [credential, setCredential] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState([]);
+  const [showSignUp, setShowSignUp] = useState(false)
 
   if (sessionUser) return (
     <Redirect to="/" />
@@ -36,9 +39,7 @@ function LoginFormPage() {
       </div>
       <div className="loginBoxLoginArea">
         <div className="signUpSide">
-          <NavLink to="/signup">
-            <button className="signUpButton">Sign Up Here</button>
-          </NavLink>
+            <button className="signUpButton" onClick={() => setShowSignUp(true)}>Sign Up Here</button>
         </div>
         <div className="LoginSide">
           <form onSubmit={handleSubmit}>
@@ -50,7 +51,7 @@ function LoginFormPage() {
                 ))}
               </ul>
               <div className="inputFields" id="inputField">
-                <label htmlFor="userName">UserName</label>
+                <label htmlFor="userName">Email</label>
                 <input
                   type="text"
                   value={credential}
@@ -77,13 +78,14 @@ function LoginFormPage() {
         </div>
       </div>
       <div className="loginBottom">
-        
         <a href="https://github.com/Ckessler30" className="gitHubChase">
-        <div className="gitHubPic">
-
-        </div>
-          Chase Kessler</a>
+          <div className="gitHubPic"></div>
+          Chase Kessler
+        </a>
       </div>
+      {showSignUp && 
+        <SignupFormPage hideForm={() => setShowSignUp(false)}/>
+      }
     </div>
   );
 }

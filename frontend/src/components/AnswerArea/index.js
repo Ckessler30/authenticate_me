@@ -6,6 +6,7 @@ import CreateCommentForm from "../CreateComment";
 import DeleteForm from "../DeletePopup";
 import EditAnswerForm from "../EditAnswer";
 
+import './answerArea.css'
 
 const AnswerArea = ({ answer }) => {
     const dispatch = useDispatch();
@@ -15,39 +16,60 @@ const AnswerArea = ({ answer }) => {
 
 
 
+
+    const dateParts = answer.createdAt.split("-");
+    const day = dateParts[2].split("T")[0];
+    // console.log(dateParts)
+    // console.log(day)
+    const newDate = new Date(dateParts[0], dateParts[1] - 1, day);
+    let finalDate = newDate
+      .toDateString()
+      .split(" ")[1]
+      .concat(newDate.toDateString().split(" ")[2]);
+
+
     return (
       <div className="answer" key={answer.id}>
         <h5>
-          <i className="fas fa-user-circle"></i>
+          <i className="fas fa-user-tie" id="astro"></i>
 
-          {answer.User?.username}
+          {" "+answer.User?.username}
         </h5>
+        <p className="dateAnswer">{finalDate ? "~"+finalDate : "now"}</p>
         <p>{answer.answerText}</p>
-        <div className="answerImg">
-          <img src={answer.answerImg} alt="" />
+        <div
+          className="questionImg"
+          style={{
+            backgroundImage: `url(${answer.answerImg}) `,
+          }}
+        >
+          {/* <img src={answer.answerImg} alt="" /> */}
         </div>
-        <p>{answer.votes}</p>
         <div className="bottomAnswerButtons">
           <div className="bottomAnswerButtonsLeft">
-            <button>
-              <i className="fas fa-arrow-up"></i>
+            <button className="questionButtons">
+              <i className="fas fa-arrow-up">{" "+answer.votes}</i>
             </button>
-            <button>
+            <button className="questionButtons">
               <i className="fas fa-arrow-down"></i>
             </button>
-            <button>
+            <button className="questionButtons">
               <i className="fas fa-sync"></i>
             </button>
-            <button>
+            <button className="questionButtons">
               <i className="fas fa-comment"></i>
             </button>
           </div>
           <div className="bottomAnswerButtonsRight">
-            <button>
+            <button className="questionButtons">
               <i className="fas fa-share"></i>
             </button>
-            {sessionUser?.id === answer.userId && <DeleteForm answerId={answer.id} deleteType={"answer"}/>}
-            {sessionUser?.id === answer.userId && <EditAnswerForm answer={answer}/>}
+            {sessionUser?.id === answer.userId && (
+              <DeleteForm answerId={answer.id} deleteType={"answer"} />
+            )}
+            {sessionUser?.id === answer.userId && (
+              <EditAnswerForm answer={answer} />
+            )}
           </div>
         </div>
         <CreateCommentForm answerId={answer.id} />
