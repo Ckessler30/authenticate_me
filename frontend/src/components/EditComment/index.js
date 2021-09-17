@@ -8,6 +8,7 @@ import "./editComment.css"
 const EditCommentForm = ({ comment }) => {
   const [newCommentText, setNewCommentText] = useState(comment.commentText);
   const [showEditArea, setShowEditArea] = useState(false);
+   const sessionUser = useSelector((state) => state.session.user);
    const [errors, setErrors] = useState([]);
   const dispatch = useDispatch();
 
@@ -23,6 +24,10 @@ const EditCommentForm = ({ comment }) => {
       commentText: newCommentText,
       commentId: comment.id,
     };
+
+    if(newCommentText === ''){
+      setNewCommentText(comment.commentText)
+    }
 
     try{
       const updatedComment = await dispatch(editComment(updatedCommentDetails));
@@ -51,7 +56,7 @@ const EditCommentForm = ({ comment }) => {
             }}
           >
             {errors.length > 0 && (
-              <ul className="commentErrors">
+              <ul className="editCommentErrors">
                 {errors.map((error, idx) => (
                   <li key={idx}>{error}</li>
                 ))}
@@ -63,10 +68,11 @@ const EditCommentForm = ({ comment }) => {
               onChange={(e) => setNewCommentText(e.target.value)}
             ></textarea>
             <div className="editCommentButtons">
-              <button>Cancel</button>
+              <button className="newCommentButtons">Cancel</button>
               <button
                 type="submit"
                 disabled={comment.commentText === newCommentText}
+                className="updateCommentButton"
               >
                 Update
               </button>
@@ -74,7 +80,14 @@ const EditCommentForm = ({ comment }) => {
           </form>
         </div>
       )}
-      <button onClick={() => setShowEditArea(true)}>Edit</button>
+      {sessionUser?.id === comment.userId && (
+        <button
+          className="newCommentButtons"
+          onClick={() => setShowEditArea(true)}
+        >
+          Edit
+        </button>
+      )}
     </div>
   );
 };

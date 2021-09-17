@@ -12,8 +12,9 @@ const questionValidations = [
 check("title")
   .notEmpty()
   .withMessage("Please enter a title")
-  .isLength({ max: 255 })
-  .withMessage("Title must be less than 255 characters"),
+  .isLength({ min: 4, max: 255 })
+  .withMessage("Title must be less than 255 characters")
+  .withMessage("Title must be greater than 3 characters"),
 check("questionText")
   .notEmpty()
   .withMessage("Please enter a question"),

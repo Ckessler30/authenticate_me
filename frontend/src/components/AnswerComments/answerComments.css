@@ -22,7 +22,7 @@
 
 .newCommentButtons {
   align-items: center;
-  background-color: #e6e6e6;
+  background-color: #fafafa;
   border: 0;
   border-radius: 100px;
   box-sizing: border-box;
@@ -49,15 +49,22 @@
   vertical-align: middle;
 }
 
-.newCommentButtons:hover,
-.newCommentButtons:focus { 
-  background-color: #b1b0b0;
+.newCommentButtons:hover { 
+  background-color: #e6e6e6;
   color: #ffffff;
 }
 
-.newCommentButtons:active {
+/* .newCommentButtons:active {
   background: #09223b;
   color: rgb(255, 255, 255, .7);
+} */
+
+/* .bottomHalfComments{
+  padding: 1rem;
+} */
+
+.bottomHalfComments>p{
+  margin-left: 1.2rem;
 }
 
 
