@@ -10,20 +10,34 @@ const EditQuestionForm = ({question}) => {
     const [showEditQuestion, setShowEditQuestion] = useState(false)
     const [title, setTitle] = useState(question.title)
     const [questionText, setQuestionText] = useState(question.questionText)
+    const [errors, setErrors] = useState([]);
+
+     const handleErrors = async (res) => {
+       const data = await res.json();
+       if (data && data.errors) setErrors(data.errors);
+     };
 
     const handleSubmit = async(e) => {
         e.preventDefault()
-
+        setErrors([])
         const updatedQuestionDetails = {
             title,
             questionId: question.id,
             questionText
         }
 
-        const updatedQuestion = await dispatch(editQuestion(updatedQuestionDetails))
+        if(title.length < 3){
+          setTitle(question.title)
+        }
 
-        if(updatedQuestion){
-            setShowEditQuestion(false)
+        try{
+           const updatedQuestion = await dispatch(editQuestion(updatedQuestionDetails))
+
+           if(updatedQuestion){
+               setShowEditQuestion(false)
+           }
+        }catch(res){
+          handleErrors(res)
         }
     }
 
@@ -34,7 +48,10 @@ const EditQuestionForm = ({question}) => {
 
   return (
     <div className="editQuestionFormBox">
-      <button onClick={() => setShowEditQuestion(true)} className="questionButtons">
+      <button
+        onClick={() => setShowEditQuestion(true)}
+        className="questionButtons"
+      >
         <i className="fas fa-pen-alt"></i> Edit
       </button>
 
@@ -50,6 +67,13 @@ const EditQuestionForm = ({question}) => {
                   <i className="fas fa-times"></i>
                 </button>
                 <h2>Edit Question</h2>
+                {errors.length > 0 && (
+                  <ul className="commentErrors">
+                    {errors.map((error, idx) => (
+                      <li key={idx}>{error}</li>
+                    ))}
+                  </ul>
+                )}
                 <input
                   type="text"
                   value={title}

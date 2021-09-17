@@ -12,11 +12,17 @@ const CreateQuestionForm = ({ hideForm }) => {
     const [title, setTitle] = useState('')
     const [questionText, setQuestionText] = useState('')
     const [questionImg, setQuestionImg] = useState("https://cdn.vox-cdn.com/thumbor/HWPOwK-35K4Zkh3_t5Djz8od-jE=/0x86:1192x710/fit-in/1200x630/cdn.vox-cdn.com/uploads/chorus_asset/file/22312759/rickroll_4k.jpg");
+    const [errors, setErrors] = useState([]);
     // console.log(sessionUser)
+
+    const handleErrors = async (res) => {
+      const data = await res.json();
+      if (data && data.errors) setErrors(data.errors);
+    };
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-
+        setErrors([])
         const questionDetails = {
             userId: sessionUser.id,
             title,
@@ -25,11 +31,15 @@ const CreateQuestionForm = ({ hideForm }) => {
         }
 
         // console.log(questionDetails)
-        const createdQuestion = await dispatch(createNewQuestion(questionDetails))
-        if(createdQuestion){
-            //need to update this before final
-            history.push('/')
-            hideForm()
+        try{
+          const createdQuestion = await dispatch(createNewQuestion(questionDetails))
+          if(createdQuestion){
+              //need to update this before final
+              history.push('/')
+              hideForm()
+          }
+        }catch(res){
+          handleErrors(res)
         }
     }
         const handleCancelClick = (e) => {
@@ -41,6 +51,13 @@ const CreateQuestionForm = ({ hideForm }) => {
           <div className="createNewQuestion">
             <div className="createNewQuestionInner">
               <form onSubmit={handleSubmit} className="createQuestionInputs">
+                {errors.length > 0 && (
+                  <ul className="commentErrors">
+                    {errors.map((error, idx) => (
+                      <li key={idx}>{error}</li>
+                    ))}
+                  </ul>
+                )}
                 <input
                   type="text"
                   placeholder="Question Title"

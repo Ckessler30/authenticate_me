@@ -5,8 +5,14 @@ const { check, validationResult } = require("express-validator");
 
 const { User, Question, Answer, Comment, Vote } = require("../../db/models");
 const { requireAuth } = require("../../utils/auth");
+const { handleValidationErrors } = require('../../utils/validation')
 
-const answerValidations = require('../../validations/answers')
+const answerValidations = 
+[  check("answerText")
+    .notEmpty()
+    .withMessage("Please enter an answer"),
+   handleValidationErrors
+  ]
 
 
 router.get('/', asyncHandler(async(req, res) => {
@@ -22,7 +28,7 @@ router.get('/', asyncHandler(async(req, res) => {
 
 router.post(
   "/new",
-  answerValidations.validateCreate,
+  answerValidations,
   requireAuth,
   asyncHandler(async (req, res) => {
        const { userId, questionId, answerText, answerImg } = req.body;
@@ -78,7 +84,7 @@ router.delete("/:id(\\d+)", requireAuth, asyncHandler(async(req, res) => {
 }))
 
 
-router.put("/:id(\\d+)", requireAuth, asyncHandler(async(req,res) => {
+router.put("/:id(\\d+)", answerValidations, requireAuth, asyncHandler(async(req,res) => {
   const { answerId, answerText, answerImg} = req.body
   const answer = await Answer.findOne({
     where: {

@@ -11,20 +11,34 @@ const EditAnswerForm = ({ answer }) => {
   const [showEditAnswer, setShowEditAnswer] = useState(false);
   const [answerText, setAnswerText] = useState(answer.answerText);
   const [answerImg, setAnswerImg] = useState(answer.answerImg);
+  const [errors, setErrors] = useState([]);
+
+  const handleErrors = async (res) => {
+    const data = await res.json();
+    if (data && data.errors) setErrors(data.errors);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    setErrors([])
     const updatedAnswerDetails = {
       answerText,
       answerId: answer.id,
       answerImg,
     };
 
-    const updatedAnswer = await dispatch(editAnswer(updatedAnswerDetails));
+    if(answerText === ''){
+      setAnswerText(answer.answerText)
+    }
 
-    if (updatedAnswer) {
-      setShowEditAnswer(false);
+    try{
+      const updatedAnswer = await dispatch(editAnswer(updatedAnswerDetails));
+  
+      if (updatedAnswer) {
+        setShowEditAnswer(false);
+      }
+    }catch(res){
+      handleErrors(res)
     }
   };
 
@@ -34,7 +48,10 @@ const EditAnswerForm = ({ answer }) => {
   };
   return (
     <div className="editQuestionFormBox">
-      <button onClick={() => setShowEditAnswer(true)} className="questionButtons">
+      <button
+        onClick={() => setShowEditAnswer(true)}
+        className="questionButtons"
+      >
         <i className="fas fa-pen-alt"></i>Edit
       </button>
       {showEditAnswer && (
@@ -42,10 +59,20 @@ const EditAnswerForm = ({ answer }) => {
           <div className="editQuestionFormInner">
             <form onSubmit={handleSubmit} className="editQuestionInputs">
               <div className="editQuestionTop">
-                <button onClick={() => setShowEditAnswer(false)} className="xButton">
+                <button
+                  onClick={() => setShowEditAnswer(false)}
+                  className="xButton"
+                >
                   <i className="fas fa-times"></i>
                 </button>
                 <h2>Edit Answer</h2>
+                {errors.length > 0 && (
+                  <ul className="commentErrors">
+                    {errors.map((error, idx) => (
+                      <li key={idx}>{error}</li>
+                    ))}
+                  </ul>
+                )}
                 <input
                   type="text"
                   value={answerImg}
@@ -53,14 +80,29 @@ const EditAnswerForm = ({ answer }) => {
                 />
                 <textarea
                   required
-                  className ="editAnswerTextArea"
+                  className="editAnswerTextArea"
                   value={answerText}
                   onChange={(e) => setAnswerText(e.target.value)}
                 ></textarea>
               </div>
               <div className="editQuestionButtons">
-                <button type="button" onClick={() => setShowEditAnswer(false)} className="update-buttons2">Cancel</button>
-                <button type="submit" disabled={answer.answerText === answerText && answer.answerImg === answerImg} className="update-buttons">Save</button>
+                <button
+                  type="button"
+                  onClick={() => setShowEditAnswer(false)}
+                  className="update-buttons2"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  disabled={
+                    answer.answerText === answerText &&
+                    answer.answerImg === answerImg
+                  }
+                  className="update-buttons"
+                >
+                  Save
+                </button>
               </div>
             </form>
           </div>

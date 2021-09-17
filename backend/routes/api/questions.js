@@ -5,13 +5,23 @@ const { check, validationResult } = require("express-validator");
 
 const { User, Question, Answer, Comment, Vote } = require('../../db/models');
 const { requireAuth } = require("../../utils/auth");
-
-const questionValidations = require('../../validations/questions')
-
+const { handleValidationErrors } = require("../../utils/validation");
 
 
+const questionValidations = [
+check("title")
+  .notEmpty()
+  .withMessage("Please enter a title")
+  .isLength({ max: 255 })
+  .withMessage("Title must be less than 255 characters"),
+check("questionText")
+  .notEmpty()
+  .withMessage("Please enter a question"),
+handleValidationErrors
+]
 
-router.post('/new', questionValidations.validateCreate, requireAuth, asyncHandler(async(req, res) => {
+
+router.post('/new', questionValidations, requireAuth, asyncHandler(async(req, res) => {
     const { userId, title, questionText, questionImg} = req.body
     // console.log(typeof userId)
     const test = await Question.create({
@@ -77,7 +87,7 @@ router.delete("/:id(\\d+)", requireAuth, asyncHandler(async(req,res) => {
 }));
 
 
-router.put("/:id(\\d+)", requireAuth, asyncHandler(async(req, res) => {
+router.put("/:id(\\d+)", questionValidations,requireAuth, asyncHandler(async(req, res) => {
     const { title, questionId, questionText} = req.body
     const question = await Question.findOne({
         where: {
