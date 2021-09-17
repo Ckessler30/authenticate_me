@@ -90,6 +90,14 @@ a{
    margin: .5rem -.5rem;
 }
 
+.leftSideGit{
+    /* height: 1rem; */
+    width: 100%;
+    background-color: rgb(240, 239, 239);
+    margin-top: 1rem;
+   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
 
 
 .questionHeader{

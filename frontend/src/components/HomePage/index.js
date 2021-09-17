@@ -90,6 +90,12 @@ function HomePage () {
                 Memes
               </button>
             </div>
+            <div className="leftSideGit">
+              <a href="https://github.com/Ckessler30" className="gitHubChase">
+                <div className="gitHubPic"></div>
+                Chase Kessler
+              </a>
+            </div>
           </div>
           <div className="mainHomeBar">
             {sessionUser && (
