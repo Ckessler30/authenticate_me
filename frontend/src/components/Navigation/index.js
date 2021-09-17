@@ -29,10 +29,13 @@ function Navigation({ isLoaded  }){
       <ul className="navBar">
         <li className="navs">
           <NavLink to="/">
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Quora_logo_2015.svg/1200px-Quora_logo_2015.svg.png"
-              alt=""
-            />
+            <div className="logoBox">
+              <h2>!Quora</h2>
+              {/* <img
+                src="/images/157364-abstract-red-background-vector-illustration.jpg"
+                alt=""
+              /> */}
+            </div>
           </NavLink>
         </li>
         <li className="navs">

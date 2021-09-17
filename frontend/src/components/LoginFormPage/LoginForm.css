@@ -189,9 +189,17 @@ font-size: 1rem;
     justify-content: space-between;
 }
 
+.loginLogo{
+      align-self: center;
+    font-family: "Karma" ;
+    color: #efc050	;
+    font-size: 3rem;
+    margin-bottom: -5rem;
+}
+
 .demoButton {
   align-items: center;
-  background-color: #c82727;
+  background-color: #efc050;
   border: 0;
   border-radius: 100px;
   box-sizing: border-box;
@@ -221,7 +229,7 @@ font-size: 1rem;
 
 .demoButton:hover,
 .demoButton:focus { 
-  background-color: #aa2222;
+  background-color: #cfa646;
   color: #ffffff;
 }
 

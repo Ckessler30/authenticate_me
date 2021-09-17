@@ -38,10 +38,13 @@ function LoginFormPage() {
   return (
     <div className="loginBox">
       <div className="loginBoxHead">
-        <img
+        <div className="loginLogo">
+          <h2>!Quora</h2>
+        </div>
+        {/* <img
           src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Quora_logo_2015.svg/1200px-Quora_logo_2015.svg.png"
           alt=""
-        />
+        /> */}
         <h3>A place to share knowledge and better understand the world</h3>
       </div>
       <div className="loginBoxLoginArea">

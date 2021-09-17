@@ -33,7 +33,7 @@
 
     .profileMenu button{
  align-items: center;
-  background-color: #c82727;
+  background-color: #efc050	;
   border: 0;
   border-radius: 100px;
   box-sizing: border-box;
@@ -62,7 +62,7 @@
 
 .profileMenu button:hover,
 .profileMenu button:focus { 
-  background-color: #aa2222;
+  background-color: #cfa646;
   color: #ffffff;
 }
 
