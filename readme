@@ -19,5 +19,7 @@ Users have the ability to create answers to particular questions as well as edit
 Users have the ability to create comments on other users answers, as well as their own answers.  Editing and deleting your own comments is also just as seamless in the UI.
 
 
+...Many more features to come
+
 ### Notable Difficulties
 Being my first solo project it was definitley a task to get used to the workflow of React and Redux by myself, where each feature was built out fully before moving onto the next.  I had a great learning experience in doing so and made it through several bumps in the road to get this to presentation level.
