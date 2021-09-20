@@ -33,7 +33,7 @@ const AnswerArea = ({ answer }) => {
         <h5>
           <i className="fas fa-user-tie" id="astro"></i>
 
-          {" "+answer.User?.username}
+          {answer.User?.username ? " "+answer.User?.username : ' Just now'}
         </h5>
         <p className="dateAnswer">{finalDate ? "~"+finalDate : "now"}</p>
         <p>{answer.answerText}</p>
