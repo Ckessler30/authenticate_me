@@ -7,15 +7,15 @@ For my first solo project I chose to clone the website, Quora.  Using a backend 
 
 ### Features
 
--Questions
+#### Questions
 Users have the ability to create questions, edit their own questions, and delete their own questions.
 
 
--Answers
+#### Answers
 Users have the ability to create answers to particular questions as well as edit and delete their answers.
 
 
--Comments
+#### Comments
 Users have the ability to create comments on other users answers, as well as their own answers.  Editing and deleting your own comments is also just as seamless in the UI.
 
 
