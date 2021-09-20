@@ -56,9 +56,9 @@ const AnswerArea = ({ answer }) => {
             <button className="questionButtons">
               <i className="fas fa-sync"></i>
             </button>
-            <button className="questionButtons">
+            {/* <button className="questionButtons">
               <i className="fas fa-comment"></i>
-            </button>
+            </button> */}
           </div>
           <div className="bottomAnswerButtonsRight">
             <button className="questionButtons">
