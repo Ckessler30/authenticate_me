@@ -46,39 +46,39 @@ router.post(
 
 router.delete("/:id(\\d+)", requireAuth, asyncHandler(async(req, res) => {
   const { answerId } = req.body
-  const answer = await Answer.findOne({
+  const answer = await Answer.destroy({
     where:{
       id: answerId
     }
   })
 
 
-  if(answer){
-    const comments = await Comment.findAll({
-      where:{
-        answerId: answer.id
-      }
-    })
-    if(comments){
-      comments.forEach(async(comment) => {
-        await comment.destroy()
-      })
-    }
-    // console.log("ABOUT TO HIT")
-    const votes = await Vote.findAll({
-      where: {answerId: 1}
-    })
-    // console.log("VOTES HERE", votes)
+  // if(answer){
+  //   const comments = await Comment.findAll({
+  //     where:{
+  //       answerId: answer.id
+  //     }
+  //   })
+  //   if(comments){
+  //     comments.forEach(async(comment) => {
+  //       await comment.destroy()
+  //     })
+  //   }
+  //   // console.log("ABOUT TO HIT")
+  //   const votes = await Vote.findAll({
+  //     where: {answerId: 1}
+  //   })
+  //   // console.log("VOTES HERE", votes)
 
-    if(votes){
-      votes.forEach(async(vote) => {
-        await vote.destroy()
-      })
-    }
+  //   if(votes){
+  //     votes.forEach(async(vote) => {
+  //       await vote.destroy()
+  //     })
+  //   }
 
 
-    await answer.destroy()
-  }
+  //   await answer.destroy()
+  // }
 
   return res.json(answerId)
 }))
