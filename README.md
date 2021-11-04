@@ -6,7 +6,7 @@
 To use all of the features of the site as well as just browsing, !Quroa requires user auth just like the actual Quroa site.  Please create an account or sign in as the Demo User to begin navigating. 
 
 ## !Quora Architecture 
-!Quroa is built with a React/Redux frontend and an Expressbackend that is working PostgreSQL as a database.  The querying is done on the backend using Sequelize.
+!Quora is built with a React/Redux frontend and an Expressbackend that is working PostgreSQL as a database.  The querying is done on the backend using Sequelize.
 
 ## Frontend Technologies
 ### React
