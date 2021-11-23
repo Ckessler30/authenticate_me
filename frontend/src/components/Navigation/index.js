@@ -44,22 +44,22 @@ function Navigation({ isLoaded  }){
           </NavLink>
         </li>
         <li className="navs">
-          <NavLink to="/">
+          <NavLink to="/working-on-it">
             <i className="fas fa-list-alt"></i>
           </NavLink>
         </li>
         <li className="navs">
-          <NavLink to="/">
+          <NavLink to="/working-on-it">
             <i className="fas fa-edit"></i>
           </NavLink>
         </li>
         <li className="navs">
-          <NavLink to="/">
+          <NavLink to="/working-on-it">
             <i className="fas fa-users"></i>
           </NavLink>
         </li>
         <li className="navs">
-          <NavLink to="/">
+          <NavLink to="/working-on-it">
             <i className="fas fa-bell"></i>
           </NavLink>
         </li>
@@ -70,7 +70,7 @@ function Navigation({ isLoaded  }){
         </li>
         <li className="navs">{isLoaded && sessionLinks}</li>
         <li className="navs">
-          <NavLink to="/">
+          <NavLink to="/working-on-it">
             <i className="fas fa-globe"></i>
           </NavLink>
         </li>

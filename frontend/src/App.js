@@ -8,6 +8,7 @@ import QuestionPage from './components/QuestionPage';
 import * as sessionActions from "./store/session";
 import HomePage from './components/HomePage';
 import FilteredQuestions from './components/FilteredQuestions';
+import UnderConstruction from './components/UnderConstruction/UnderConstruction';
 // import { getQuestions } from './store/questions';
 
 
@@ -39,6 +40,9 @@ function App() {
           <Switch>
             <Route exact path="/">
               <HomePage />
+            </Route>
+            <Route exact path="/working-on-it">
+              <UnderConstruction />
             </Route>
 
             <Route path="/questions/:questionId">
