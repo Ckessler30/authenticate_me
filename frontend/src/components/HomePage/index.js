@@ -40,10 +40,10 @@ function HomePage () {
         <div className="mainHome">
           <div className="leftHomeBar">
             <div className="spaces">
-              <button className="createSpaceButton">
-                <i className="far fa-plus-square"></i>
-                Create Space
-              </button>
+              <div className="createSpaceButton">
+                {/* <i className="far fa-plus-square"></i> */}
+                Spaces
+              </div>
               <button className="spaceButtons">
                 <div
                   className="spacesLogos"
@@ -89,12 +89,6 @@ function HomePage () {
                 ></div>
                 Memes
               </button>
-            </div>
-            <div className="leftSideGit">
-              <a href="https://github.com/Ckessler30" className="gitHubChase">
-                <div className="gitHubPic"></div>
-                Chase Kessler
-              </a>
             </div>
           </div>
           <div className="mainHomeBar">
@@ -152,7 +146,7 @@ function HomePage () {
                     </div>
                   </NavLink>
                   <div className="questionFooter">
-                    <div className="questionFootButtonsLeft">
+                    {/* <div className="questionFootButtonsLeft">
                       <button className="questionButtons">
                         <i className="fas fa-arrow-alt-circle-up"></i>
 
@@ -164,14 +158,14 @@ function HomePage () {
                       <button className="questionButtons">
                         <i className="fas fa-sync-alt"></i>
                       </button>
-                      {/* <button className="questionButtons">
-                        <i class="fas fa-comment"></i>
-                      </button> */}
-                    </div>
-                    <div className="questionFootButtonsRight">
                       <button className="questionButtons">
-                        <i className="fas fa-share"></i>
+                        <i class="fas fa-comment"></i>
                       </button>
+                    </div> */}
+                    <div className="questionFootButtonsRight">
+                      {/* <button className="questionButtons">
+                        <i className="fas fa-share"></i>
+                      </button> */}
 
                       {sessionUser?.id === +question.userId && (
                         <DeleteForm
@@ -189,7 +183,23 @@ function HomePage () {
             })}
           </div>
           <div className="rightHomeBar">
-            <div className="improveFeed">
+            <div className="leftSideGit">
+              <a href="https://github.com/Ckessler30" target="_blank" className="gitHubChase">
+                <div className="gitHubPic2"></div>
+                GitHub
+              </a>
+            </div>
+            <div className="leftSideGit">
+              <a
+                href="https://www.linkedin.com/in/chase-kessler-97a135221/"
+                target="_blank"
+                className="gitHubChase"
+              >
+                <div className="linkedInPic"></div>
+                LinkedIn
+              </a>
+            </div>
+            {/* <div className="improveFeed">
               <div className="improveFeedHead">
                 <h3>Improve your feed</h3>
               </div>
@@ -225,7 +235,7 @@ function HomePage () {
                   <p>Share And Discuss Everything Seo and Digital Marketing</p>
                 </li>
               </ul>
-            </div>
+            </div> */}
           </div>
         </div>
       </main>

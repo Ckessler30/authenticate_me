@@ -51,7 +51,9 @@ function LoginFormPage() {
       </div>
       <div className="loginBoxLoginArea">
         <div className="signUpSide">
-            <button className="signUpButton" onClick={() => setShowSignUp(true)}>Sign Up Here</button>
+          <button className="signUpButton" onClick={() => setShowSignUp(true)}>
+            Sign Up Here
+          </button>
         </div>
         <div className="LoginSide">
           <form onSubmit={handleSubmit}>
@@ -83,7 +85,9 @@ function LoginFormPage() {
                 />
               </div>
               <div className="loginDemoButtons">
-                <button onClick={handleDemoUser} className="demoButton">Demo</button>
+                <button onClick={handleDemoUser} className="demoButton">
+                  Demo
+                </button>
                 <button className="submitButton" type="submit">
                   Log In
                 </button>
@@ -93,14 +97,20 @@ function LoginFormPage() {
         </div>
       </div>
       <div className="loginBottom">
-        <a href="https://github.com/Ckessler30" className="gitHubChase">
+        <a href="https://github.com/Ckessler30" target="_blank" className="gitHubChase">
           <div className="gitHubPic"></div>
-          Chase Kessler
+          GitHub
+        </a>
+        <a
+          href="https://www.linkedin.com/in/chase-kessler-97a135221/"
+          className="gitHubChase"
+          target="_blank"
+        >
+          <div className="linkedInPic1"></div>
+          LinkedIn
         </a>
       </div>
-      {showSignUp && 
-        <SignupFormPage hideForm={() => setShowSignUp(false)}/>
-      }
+      {showSignUp && <SignupFormPage hideForm={() => setShowSignUp(false)} />}
     </div>
   );
 }

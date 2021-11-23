@@ -46,7 +46,7 @@ const AnswerArea = ({ answer }) => {
           {/* <img src={answer.answerImg} alt="" /> */}
         </div>
         <div className="bottomAnswerButtons">
-          <div className="bottomAnswerButtonsLeft">
+          {/* <div className="bottomAnswerButtonsLeft">
             <button className="questionButtons">
               <i className="fas fa-arrow-up"></i>
             </button>
@@ -56,14 +56,14 @@ const AnswerArea = ({ answer }) => {
             <button className="questionButtons">
               <i className="fas fa-sync"></i>
             </button>
-            {/* <button className="questionButtons">
-              <i className="fas fa-comment"></i>
-            </button> */}
-          </div>
-          <div className="bottomAnswerButtonsRight">
             <button className="questionButtons">
-              <i className="fas fa-share"></i>
+              <i className="fas fa-comment"></i>
             </button>
+          </div> */}
+          <div className="bottomAnswerButtonsRight">
+            {/* <button className="questionButtons">
+              <i className="fas fa-share"></i>
+            </button> */}
             {sessionUser?.id === answer.userId && (
               <DeleteForm answerId={answer.id} deleteType={"answer"} />
             )}

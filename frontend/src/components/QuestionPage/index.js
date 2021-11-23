@@ -53,15 +53,15 @@ function QuestionPage () {
                 <button className="questionButtonsLeft" onClick={() => setShowAnswerForm(true)} disabled={!sessionUser}>
                   <i class="fas fa-edit"></i> Answer
                 </button>
-                <button className="questionButtonsLeft">
+                {/* <button className="questionButtonsLeft">
                   <i class="fas fa-wifi"></i>
                   Follow
                 </button>
                 <button className="questionButtonsLeft">
                   <i class="fas fa-user-astronaut"></i>Request
-                </button>
+                </button> */}
               </div>
-              <div className="questionLinksRight">
+              {/* <div className="questionLinksRight">
                 <button className="questionButtonsLeft">
                   <i class="fas fa-comment"></i>
                 </button>
@@ -71,7 +71,7 @@ function QuestionPage () {
                 <button className="questionButtonsLeft">
                   <i class="fas fa-share"></i>
                 </button>
-              </div>
+              </div> */}
             </div>
             {showAnswerForm && (
               <CreateAnswerForm hideForm={() => setShowAnswerForm(false)} />

@@ -96,6 +96,17 @@ a{
     background-color: rgb(240, 239, 239);
     margin-top: 1rem;
    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+   display: flex;
+   justify-content: space-around;
+
+}
+
+.gitHubPic2{
+    height: 3rem;
+    width: 3rem;
+    background-image: url(https://w7.pngwing.com/pngs/914/758/png-transparent-github-social-media-computer-icons-logo-android-github-logo-computer-wallpaper-banner.png);
+    background-size: cover;
+    background-position: center;
 }
 
 
@@ -335,6 +346,14 @@ a{
     gap: .3rem;
 }
 
-.createSpaceButton:hover{
+/* .createSpaceButton:hover{
     background-color: rgb(212, 212, 212);
+} */
+
+.linkedInPic{
+    background-image: url(https://cdn.discordapp.com/attachments/908486747506221059/912812956671156234/linkedinlogo-1593683142ng48k.png);
+    background-size: cover;
+    background-position: center;
+    height: 3rem;
+    width: 3rem;
 }
