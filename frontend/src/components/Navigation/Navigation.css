@@ -25,6 +25,8 @@ a{
 }
 
 
+
+
 .navs{
     display: flex;
     gap: 2.5rem;
@@ -110,4 +112,6 @@ a{
   color: rgb(255, 255, 255, .7);
 }
 
-
+.notAllowed{
+    cursor: not-allowed;
+}
