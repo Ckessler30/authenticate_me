@@ -34,13 +34,22 @@ I chose PostgresSQL as my databse because it is very intuitive and simple to wor
 #### Questions
 Users have the ability to create questions, edit their own questions, and delete their own questions.
 
+![Alt Text](https://media.giphy.com/media/HLmHc1IyKb1h4T5xha/giphy.gif)
+
+
 
 #### Answers
 Users have the ability to create answers to particular questions as well as edit and delete their answers.
 
+![Alt Text](https://media.giphy.com/media/o8hlt6lsPVhwveE2Fn/giphy.gif)
+
+
 
 #### Comments
 Users have the ability to create comments on other users answers, as well as their own answers.  Editing and deleting your own comments is also just as seamless in the UI.
+
+![Alt Text](https://media.giphy.com/media/dUTvWyN2NC1LV4tXK5/giphy.gif)
+
 
 
 ...Many more features to come
